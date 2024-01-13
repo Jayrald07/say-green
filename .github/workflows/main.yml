@@ -39,5 +39,4 @@ jobs:
           BOUNDARY_COORDINATE_LNG_BOTTOM_LEFT: ${{ vars.BOUNDARY_COORDINATE_LNG_BOTTOM_LEFT }}
           BOUNDARY_COORDINATE_LAT_BOTTOM_LEFT: ${{ vars.BOUNDARY_COORDINATE_LAT_BOTTOM_LEFT }}
         run: |
-          npm install -g @aws-amplify/cli
-          cat amplifyconfiguration.json
+          npm run build

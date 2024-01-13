@@ -14,7 +14,19 @@ jobs:
         uses: actions/setup-node@v2
         with: 
           node-version: 20.10
-      - name: Install dependencies and build
+      - name: Install dependencies
         run: |
           npm install
-          npm run build
+      - name: Build source
+        env:
+          MAPBOX_GL_ACCESS_TOKEN: ${{ secrets.MAPBOX_GL_ACCESS_TOKEN }}
+          BOUNDARY_COORDINATE_LNG_TOP_LEFT: ${{ vars.BOUNDARY_COORDINATE_LNG_TOP_LEFT }}
+          BOUNDARY_COORDINATE_LAT_TOP_LEFT: ${{ vars.BOUNDARY_COORDINATE_LAT_TOP_LEFT }}
+          BOUNDARY_COORDINATE_LNG_TOP_RIGHT: ${{ vars.BOUNDARY_COORDINATE_LNG_TOP_RIGHT }}
+          BOUNDARY_COORDINATE_LAT_TOP_RIGHT: ${{ vars.BOUNDARY_COORDINATE_LAT_TOP_RIGHT }}
+          BOUNDARY_COORDINATE_LNG_BOTTOM_RIGHT: ${{ vars.BOUNDARY_COORDINATE_LNG_BOTTOM_RIGHT }}
+          BOUNDARY_COORDINATE_LAT_BOTTOM_RIGHT: ${{ vars.BOUNDARY_COORDINATE_LAT_BOTTOM_RIGHT }}
+          BOUNDARY_COORDINATE_LNG_BOTTOM_LEFT: ${{ vars.BOUNDARY_COORDINATE_LNG_BOTTOM_LEFT }}
+          BOUNDARY_COORDINATE_LAT_BOTTOM_LEFT: ${{ vars.BOUNDARY_COORDINATE_LAT_BOTTOM_LEFT }}
+        run: |
+          npm install -g @aws-amplify/cli

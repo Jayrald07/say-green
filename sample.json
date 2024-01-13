@@ -1,0 +1,8 @@
+{
+  "aws_cognito_region": "ap-southeast-1",
+  "aws_cognito_identity_pool_id": "ap-southeast-1:2d781ac2-5a2b-40ee-84ef-be80594ab8cf",
+  "aws_project_region": "ap-southeast-1",
+  "aws_appsync_graphqlEndpoint": "https://b67yvyhjznaexiicvf6dfneyma.appsync-api.ap-southeast-1.amazonaws.com/graphql",
+  "aws_appsync_region": "ap-southeast-1",
+  "aws_appsync_authenticationType": "AWS_IAM"
+}

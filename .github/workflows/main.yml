@@ -17,6 +17,16 @@ jobs:
       - name: Install dependencies
         run: |
           npm install
+      - name: Add amplifyconfiguration.json
+        run: |
+          echo '{
+            "aws_cognito_region": "${{ secrets.GENERAL_REGION }}"
+            "aws_cognito_identity_pool_id": "${{ secrets.COGNITO_IDENTITY_POOL_ID }}",
+            "aws_project_region": "${{ secrets.GENERAL_REGION }}",
+            "aws_appsync_graphqlEndpoint": "${{ vars.APPSYNC_API_ENDPOINT }}",
+            "aws_appsync_region": "${{ secrets.GENERAL_REGION }}",
+            "aws_appsync_authenticationType": "${{ vars.APPSYNC_AUTH_TYPE }}"
+          }' > amplifyconfiguration.json
       - name: Build source
         env:
           MAPBOX_GL_ACCESS_TOKEN: ${{ secrets.MAPBOX_GL_ACCESS_TOKEN }}
@@ -30,6 +40,4 @@ jobs:
           BOUNDARY_COORDINATE_LAT_BOTTOM_LEFT: ${{ vars.BOUNDARY_COORDINATE_LAT_BOTTOM_LEFT }}
         run: |
           npm install -g @aws-amplify/cli
-          amplify init --yes
-          npx @aws-amplify/cli codegen add --apiId ${{ secrets.APPSYNC_API_ID }} --region ap-southeast-1
           cat amplifyconfiguration.json

@@ -30,5 +30,6 @@ jobs:
           BOUNDARY_COORDINATE_LAT_BOTTOM_LEFT: ${{ vars.BOUNDARY_COORDINATE_LAT_BOTTOM_LEFT }}
         run: |
           npm install -g @aws-amplify/cli
+          amplify init --yes
           npx @aws-amplify/cli codegen add --apiId ${{ secrets.APPSYNC_API_ID }} --region ap-southeast-1
           cat amplifyconfiguration.json

@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-// import { Amplify } from "aws-amplify";
+import { Amplify } from "aws-amplify";
 // import awsmobile from "@/amplifyconfiguration.json";
 import Map from "@/components/Map";
 import MapController from "@/components/MapController";
@@ -8,7 +8,7 @@ import { MapClickEvent } from "@/types";
 import { MapControllerType } from "@/components/MapController/types";
 import ImageUploader from "@/components/ImageUploader";
 
-// Amplify.configure(awsmobile);
+Amplify.configure({});
 
 export default function Plotter() {
   const [operation, setOperation] = useState(MapControllerType.Receptacle);

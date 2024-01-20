@@ -4,12 +4,6 @@ on:
       environment:
         required: true
         type: string
-      bucket-name:
-        required: true
-        type: string
-      web-domain:
-        required: true
-        type: string
 
 jobs:
   resources-spin-up:
@@ -33,5 +27,5 @@ jobs:
             --no-confirm-changeset \
             --no-fail-on-empty-changeset \
             --parameter-overrides \
-                BucketName=${{ inputs.bucket-name }} \
-                WebDomain=${{ inputs.web-domain }}
+                BucketName=${{ vars.BUCKET_NAME }} \
+                WebDomain=${{ vars.WEB_DOMAIN }}

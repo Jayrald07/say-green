@@ -9,8 +9,10 @@ jobs:
     uses: ./.github/workflows/resources.yml
     with:
       environment: staging
+      secrets: inherit
 
   production-resources:
     uses: ./.github/workflows/resources.yml
     with:
       environment: production
+      secrets: inherit

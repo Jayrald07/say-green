@@ -35,4 +35,5 @@ jobs:
             --no-fail-on-empty-changeset \
             --parameter-overrides \
                 BucketName=${{ vars.BUCKET_NAME }} \
-                WebDomain=${{ vars.WEB_DOMAIN }}
+                WebDomain=${{ vars.WEB_DOMAIN }} \
+            --stack-name s3-bucket-images

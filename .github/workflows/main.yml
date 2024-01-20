@@ -7,6 +7,7 @@ on:
 jobs:
   static-site-generation:
     name: Deployment to S3 as static website
+    environment: Staging
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

@@ -4,6 +4,7 @@ on:
       environment:
         required: true
         type: string
+    secrets:
 
 jobs:
   resources-spin-up:

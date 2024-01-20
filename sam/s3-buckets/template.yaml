@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: S3 Bucket for images
+
+Parameters:
+  BucketName:
+    Type: String
+  WebDomain:
+    Type: String
+
+Resources:
+  S3BucketStaging:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Ref BucketName
+      CorsConfiguration:
+        CorsRules:
+          - AllowedMethods:
+              - "GET"
+              - "POST"
+            AllowedOrigins:
+              - !Ref WebDomain
+        

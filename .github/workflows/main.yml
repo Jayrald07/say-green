@@ -5,14 +5,43 @@ on:
     branches: [ master ]
 
 jobs:
-  static-site-generation:
-    name: Deployment to S3 as static website
+  resources-spin-up:
+    name: Staging resources spin up
+    runs-on: ubuntu-latest
+    environment: Staging
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aws-actions/setup-sam@v2
+        with:
+          use-installer: true
+      - uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.GENERAL_REGION }}
+      - run: cd sam/s3-buckets
+      - run: sam build --use-container
+      - run: |
+          sam deploy \
+          --no-confirm-changeset \
+          --no-fail-on-empty-changeset \
+          --parameter-overrides \
+            BucketName=${{ vars.BUCKET_IMAGES }}
+            WebDomain=${{ vars.WEB_DOMAIN }}
+
+  staging-deployment-static-site:
+    name: Staging Deployment
     environment: Staging
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.GENERAL_REGION }}
       - name: Setup node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with: 
           node-version: 20.10.0
       - name: Install dependencies
@@ -47,10 +76,5 @@ jobs:
         run: |
           npm run build
       - name: Deploy build files to S3
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: ${{ secrets.GENERAL_REGION }}
         run: |
-          aws s3 sync ./dist s3://receptacle-webpage
-          
+          aws s3 sync ./dist s3://${{ vars.BUCKET_IMAGES }}

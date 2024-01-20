@@ -4,6 +4,13 @@ on:
       environment:
         required: true
         type: string
+    secrets:
+      AWS_ACCESS_KEY_ID:
+        required: true
+      AWS_SECRET_ACCESS_KEY:
+        required: true
+      GENERAL_REGION:
+        required: true
 
 jobs:
   resources-spin-up:

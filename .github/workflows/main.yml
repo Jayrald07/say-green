@@ -9,12 +9,8 @@ jobs:
     uses: ./.github/workflows/resources.yml
     with:
       environment: staging
-      bucket-name: ${{ vars.BUCKET_NAME }}
-      web-domain: ${{ vars.WEB_DOMAIN }}
 
   production-resources:
     uses: ./.github/workflows/resources.yml
     with:
       environment: production
-      bucket-name: ${{ vars.BUCKET_NAME }}
-      web-domain: ${{ vars.WEB_DOMAIN }}

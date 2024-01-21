@@ -3,6 +3,8 @@ name: Say Green Deployment
 on:
   push:
     branches: [ master ]
+  workflow_dispatch:
+    
 
 jobs:
   staging-resources:

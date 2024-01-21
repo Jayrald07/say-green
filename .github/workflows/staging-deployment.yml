@@ -16,6 +16,6 @@ jobs:
     needs: staging-resources
     with:
       environment: staging
-      appSyncApiEndpoint: ${{ jobs.staging-resources.outputs.appSyncApiEndpoint }}
-      identityPoolId: ${{ jobs.staging-resources.outputs.identityPoolId }}
+      appSyncApiEndpoint: ${{ needs.staging-resources.outputs.appSyncApiEndpoint }}
+      identityPoolId: ${{ needs.staging-resources.outputs.identityPoolId }}
     secrets: inherit

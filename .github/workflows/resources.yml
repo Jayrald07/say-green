@@ -16,7 +16,7 @@ on:
         value: ${{ jobs.resource-spin-up.outputs.appSyncApiEndpoint }}
       identityPoolId:
         value: ${{ jobs.resource-spin-up.outputs.identityPoolId }}
-        
+
 jobs:
   resource-spin-up:
     name: Resources spin up for ${{ inputs.environment }} environment
@@ -35,6 +35,9 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.GENERAL_REGION }}
+      - uses: actions/setup-go@v4
+        with:
+          go-version: 1.20.6
       - run: |
           cd sam && \
           sam build --use-container && \

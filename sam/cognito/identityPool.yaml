@@ -1,0 +1,49 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Identity Pool for Say Green
+
+
+Resources:
+  IdentityPoolStack:
+    Type: AWS::Cognito::IdentityPool
+    Properties:
+      IdentityPoolName: IdentityPoolSayGreen
+      AllowUnauthenticatedIdentities: true
+
+  IdentityPoolUnauthenticatedAccessRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal: 
+              Federated: cognito-identity.amazonaws.com
+            Action: sts:AssumeRoleWithWebIdentity
+            Condition:
+              StringEquals:
+                cognito-identity.amazonaws.com:aud: !Ref IdentityPoolStack
+              ForAnyValue:StringLike:
+                cognito-identity.amazonaws.com:amr: unauthenticated
+      Policies: 
+        - PolicyName: appSyncAccess
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action: "appsync:GraphQL"
+                Resource: !ImportValue AppSyncApiArn
+
+  IdentityPoolUnauthenticatedRoleAttachment:
+    Type: AWS::Cognito::IdentityPoolRoleAttachment
+    Properties:
+      IdentityPoolId: !Ref IdentityPoolStack
+      Roles:
+        unauthenticated: !GetAtt IdentityPoolUnauthenticatedAccessRole.Arn
+
+Outputs:
+  IdentityPoolId:
+    Value: !Ref IdentityPoolStack
+    Export:
+      Name: IdentityPoolId

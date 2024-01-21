@@ -1,0 +1,21 @@
+name: Say Green Deployment
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  staging-resources:
+    uses: ./.github/workflows/resources.yml
+    with:
+      environment: staging
+    secrets: inherit
+
+  staging-static-site:
+    uses: ./.github/workflows/source-build.yml
+    needs: staging-resources
+    with:
+      environment: staging
+      appSyncApiEndpoint: ${{ needs.staging-resources.outputs.appSyncApiEndpoint }}
+      identityPoolId: ${{ needs.staging-resources.outputs.identityPoolId }}
+    secrets: inherit

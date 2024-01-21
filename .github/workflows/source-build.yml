@@ -1,0 +1,69 @@
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+      appSyncApiEndpoint:
+        required: true
+        type: string
+      identityPoolId:
+        required: true
+        type: string
+    secrets:
+      AWS_ACCESS_KEY_ID:
+        required: true
+      AWS_SECRET_ACCESS_KEY:
+        required: true
+      GENERAL_REGION:
+        required: true
+
+jobs:
+  source-build:
+    environment: ${{ inputs.environment }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.GENERAL_REGION }}
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with: 
+          node-version: 20.10.0
+      - name: Install dependencies
+        run: |
+          npm install
+      - name: Add amplifyconfiguration.json
+        run: |
+          jq -n \
+          --arg region ${{ secrets.GENERAL_REGION }} \
+          --arg cognitoPoolId ${{ inputs.identityPoolId }} \
+          --arg appSyncApiEndpoint ${{ inputs.appSyncApiEndpoint }} \
+          --arg appSyncAuthType ${{ vars.APPSYNC_AUTH_TYPE }} \
+          '{
+            "aws_cognito_region": $region,
+            "aws_cognito_identity_pool_id": $cognitoPoolId,
+            "aws_project_region": $region,
+            "aws_appsync_graphqlEndpoint": $appSyncApiEndpoint,
+            "aws_appsync_region": $region,
+            "aws_appsync_authenticationType": $appSyncAuthType
+          }' > src/amplifyconfiguration.json
+      - name: Build source
+        env:
+          MAPBOX_GL_ACCESS_TOKEN: ${{ secrets.MAPBOX_GL_ACCESS_TOKEN }}
+          BOUNDARY_COORDINATE_LNG_TOP_LEFT: ${{ vars.BOUNDARY_COORDINATE_LNG_TOP_LEFT }}
+          BOUNDARY_COORDINATE_LAT_TOP_LEFT: ${{ vars.BOUNDARY_COORDINATE_LAT_TOP_LEFT }}
+          BOUNDARY_COORDINATE_LNG_TOP_RIGHT: ${{ vars.BOUNDARY_COORDINATE_LNG_TOP_RIGHT }}
+          BOUNDARY_COORDINATE_LAT_TOP_RIGHT: ${{ vars.BOUNDARY_COORDINATE_LAT_TOP_RIGHT }}
+          BOUNDARY_COORDINATE_LNG_BOTTOM_RIGHT: ${{ vars.BOUNDARY_COORDINATE_LNG_BOTTOM_RIGHT }}
+          BOUNDARY_COORDINATE_LAT_BOTTOM_RIGHT: ${{ vars.BOUNDARY_COORDINATE_LAT_BOTTOM_RIGHT }}
+          BOUNDARY_COORDINATE_LNG_BOTTOM_LEFT: ${{ vars.BOUNDARY_COORDINATE_LNG_BOTTOM_LEFT }}
+          BOUNDARY_COORDINATE_LAT_BOTTOM_LEFT: ${{ vars.BOUNDARY_COORDINATE_LAT_BOTTOM_LEFT }}
+        run: |
+          npm run build
+      - name: Deploy build files to S3
+        run: |
+          aws s3 sync ./dist s3://${{ vars.BUCKET_SITE_NAME }}

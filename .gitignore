@@ -23,4 +23,5 @@ amplifytools.xcconfig
 #amplify-do-not-edit-end
 
 .env
-sam/*/*.aws-sam
+sam/*.aws-sam
+sam/*.toml

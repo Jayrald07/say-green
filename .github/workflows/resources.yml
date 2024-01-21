@@ -11,7 +11,12 @@ on:
         required: true
       GENERAL_REGION:
         required: true
-
+    outputs:
+      appSyncApiEndpoint:
+        value: ${{ jobs.resource-spin-up.outputs.appSyncApiEndpoint }}
+      identityPoolId:
+        value: ${{ jobs.resource-spin-up.outputs.identityPoolId }}
+        
 jobs:
   resource-spin-up:
     name: Resources spin up for ${{ inputs.environment }} environment

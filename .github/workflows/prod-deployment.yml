@@ -1,12 +1,21 @@
-name: Say Green Deployment
+name: Production - Say Green Deployment
 
 on:
   push:
-    branches: [ prod ]
+    branches: [ master ]
 
 jobs:
   production-resources:
     uses: ./.github/workflows/resources.yml
     with:
       environment: production
+    secrets: inherit
+
+  production-static-site:
+    uses: ./.github/workflows/source-build.yml
+    needs: production-resources
+    with:
+      environment: production
+      appSyncApiEndpoint: ${{ needs.production-resources.outputs.appSyncApiEndpoint }}
+      identityPoolId: ${{ needs.production-resources.outputs.identityPoolId }}
     secrets: inherit

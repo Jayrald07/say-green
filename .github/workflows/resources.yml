@@ -1,3 +1,5 @@
+name: Resources spin up
+
 on:
   workflow_call:
     inputs:

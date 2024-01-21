@@ -1,8 +1,8 @@
-name: Say Green Deployment
+name: Staging - Say Green Deployment
 
 on:
   push:
-    branches: [ master ]
+    branches: [ staging ]
 
 jobs:
   staging-resources:

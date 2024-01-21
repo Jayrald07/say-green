@@ -9,8 +9,6 @@ on:
         required: true
       AWS_SECRET_ACCESS_KEY:
         required: true
-      GENERAL_REGION:
-        required: true
     outputs:
       appSyncApiEndpoint:
         value: ${{ jobs.resource-spin-up.outputs.appSyncApiEndpoint }}
@@ -34,7 +32,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.GENERAL_REGION }}
+          aws-region: ${{ vars.GENERAL_REGION }}
       - run: |
           cd sam && \
           sam build --use-container --build-image public.ecr.aws/sam/build-go1.x && \

@@ -15,8 +15,6 @@ on:
         required: true
       AWS_SECRET_ACCESS_KEY:
         required: true
-      GENERAL_REGION:
-        required: true
 
 jobs:
   source-build:
@@ -28,7 +26,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.GENERAL_REGION }}
+          aws-region: ${{ vars.GENERAL_REGION }}
       - name: Setup node
         uses: actions/setup-node@v4
         with: 
@@ -39,7 +37,7 @@ jobs:
       - name: Add amplifyconfiguration.json
         run: |
           jq -n \
-          --arg region ${{ secrets.GENERAL_REGION }} \
+          --arg region ${{ vars.GENERAL_REGION }} \
           --arg cognitoPoolId ${{ inputs.identityPoolId }} \
           --arg appSyncApiEndpoint ${{ inputs.appSyncApiEndpoint }} \
           --arg appSyncAuthType ${{ vars.APPSYNC_AUTH_TYPE }} \

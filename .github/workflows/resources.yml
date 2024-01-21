@@ -46,6 +46,8 @@ jobs:
                 BucketStaticSiteName=${{ vars.BUCKET_SITE_NAME }} \
                 WebDomain=https://${{ vars.BUCKET_SITE_NAME }} \
             --stack-name say-green
+            --resolve-s3
+            --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND
       - run: |
           outputs=$(aws cloudformation describe-stacks --stack-name say-green --query 'Stacks[0].Outputs' --output json)
           echo $outputs > outputs.json

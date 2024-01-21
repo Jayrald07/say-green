@@ -1,0 +1,56 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+
+Parameters:
+  WebDomain:
+    Type: String
+  BucketImageName:
+    Type: String
+  BucketStaticSiteName:
+    Type: String
+
+Resources:
+  DynamoDbReceptacleStack:
+    Type: AWS::Serverless::Application
+    Properties:
+      Location: ./dynamodb/dynamoDbReceptacle.yaml
+  
+  StoreReceptacleFunctionStack:
+    Type: AWS::Serverless::Application
+    DependsOn: DynamoDbReceptacleStack
+    Properties:
+      Location: ./lambda/lambdaReceptacle.yaml
+  
+  AppSyncReceptacleStack:
+      Type: AWS::Serverless::Application
+      DependsOn: StoreReceptacleFunctionStack
+      Properties:
+        Location: ./appsync/appSyncReceptacle.yaml
+
+  S3BucketImagesStack:
+    Type: AWS::Serverless::Application
+    Properties:
+      Location: ./s3/bucket-images.yaml
+      Parameters:
+        BucketName: !Ref BucketImageName
+        WebDomain: !Ref WebDomain
+
+  S3BucketStaticSiteStack:
+    Type: AWS::Serverless::Application
+    Properties:
+      Location: ./s3/static-site.yaml
+      Parameters:
+        BucketName: !Ref BucketStaticSiteName
+  
+  IdentityPoolStack:
+    Type: AWS::Serverless::Application
+    DependsOn: AppSyncReceptacleStack
+    Properties:
+      Location: ./cognito/identityPool.yaml
+
+Outputs:
+  IdentityPoolId:
+    Value: !GetAtt IdentityPoolStack.Outputs.IdentityPoolId
+  AppSyncApiEndpoint:
+    Value: !GetAtt AppSyncReceptacleStack.Outputs.AppSyncApiEndpoint

@@ -2,16 +2,9 @@ name: Say Green Deployment
 
 on:
   push:
-    branches: [ master ]
+    branches: [ prod ]
 
 jobs:
-  staging-resources:
-    name: Workflow
-    uses: ./.github/workflows/resources.yml
-    with:
-      environment: staging
-    secrets: inherit
-
   production-resources:
     uses: ./.github/workflows/resources.yml
     with:

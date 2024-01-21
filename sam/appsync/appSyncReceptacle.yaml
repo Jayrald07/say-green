@@ -1,0 +1,135 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: ''
+
+Resources:
+  AppSyncApiReceptacle:
+    Type: AWS::AppSync::GraphQLApi
+    Properties:
+      Name: Receptacle
+      ApiType: GRAPHQL
+      AuthenticationType: AWS_IAM
+      Visibility: GLOBAL
+
+  AppSyncSchemaReceptacle:
+    Type: AWS::AppSync::GraphQLSchema
+    Properties:
+      ApiId: !GetAtt AppSyncApiReceptacle.ApiId
+      DefinitionS3Location: ../../graphql/receptacleSchema.graphql
+
+  AppSyncStoreReceptacleDataSource:
+    Type: AWS::AppSync::DataSource
+    Properties:
+      ApiId: !GetAtt AppSyncApiReceptacle.ApiId
+      Name: StoreReceptacle
+      Type: AWS_LAMBDA
+      LambdaConfig:
+        LambdaFunctionArn: !ImportValue StoreReceptacleFunctionArn
+      ServiceRoleArn: !GetAtt LambdaDataSourceServiceStoreReceptacleRole.Arn
+
+  AppSyncDeleteReceptacleDataSource:
+    Type: AWS::AppSync::DataSource
+    Properties:
+      ApiId: !GetAtt AppSyncApiReceptacle.ApiId
+      Name: DeleteReceptacle
+      Type: AWS_LAMBDA
+      LambdaConfig:
+        LambdaFunctionArn: !ImportValue StoreReceptacleFunctionArn
+      ServiceRoleArn: !GetAtt LambdaDataSourceServiceStoreReceptacleRole.Arn
+
+  AppSyncApiReceptacleResolver:
+    Type: AWS::AppSync::Resolver
+    DependsOn:
+      - AppSyncSchemaReceptacle
+      - AppSyncStoreReceptacleDataSource
+    Properties:
+      ApiId: !GetAtt AppSyncApiReceptacle.ApiId
+      Kind: UNIT
+      RequestMappingTemplate: |
+        {
+          "version" : "2017-02-28",
+          "operation": "Invoke",
+          "payload": {
+            "type": "create",
+            "payload": $util.toJson($context.args)
+          }
+        }
+      ResponseMappingTemplate: $util.toJson($context.result)
+      FieldName: createReceptacleLocation
+      TypeName: Mutation
+      DataSourceName: !GetAtt AppSyncStoreReceptacleDataSource.Name
+
+  AppSyncApiDeleteReceptacleResolver:
+    Type: AWS::AppSync::Resolver
+    DependsOn:
+      - AppSyncSchemaReceptacle
+      - AppSyncStoreReceptacleDataSource
+    Properties:
+      ApiId: !GetAtt AppSyncApiReceptacle.ApiId
+      Kind: UNIT
+      RequestMappingTemplate: |
+        {
+          "version" : "2017-02-28",
+          "operation": "Invoke",
+          "payload": {
+            "type": "delete",
+            "payload": $util.toJson($context.args)
+          }
+        }
+      ResponseMappingTemplate: $util.toJson($context.result)
+      FieldName: deleteReceptacleLocation
+      TypeName: Mutation
+      DataSourceName: !GetAtt AppSyncDeleteReceptacleDataSource.Name
+
+  AppSyncApiGetReceptacleResolver:
+    Type: AWS::AppSync::Resolver
+    DependsOn:
+      - AppSyncSchemaReceptacle
+      - AppSyncStoreReceptacleDataSource
+    Properties:
+      ApiId: !GetAtt AppSyncApiReceptacle.ApiId
+      Kind: UNIT
+      RequestMappingTemplate: |
+        {
+          "version" : "2017-02-28",
+          "operation": "Invoke",
+          "payload": {
+            "type": "get"
+          }
+        }
+      ResponseMappingTemplate: $util.toJson($context.result)
+      FieldName: getReceptacleLocation
+      TypeName: Query
+      DataSourceName: !GetAtt AppSyncStoreReceptacleDataSource.Name
+      
+  LambdaDataSourceServiceStoreReceptacleRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - appsync.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      Policies:
+        - PolicyName: LambdaFunctionGetSessionPolicy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - lambda:InvokeFunction
+                Resource: !ImportValue StoreReceptacleFunctionArn
+
+Outputs:
+  AppSyncApiArn:
+    Value: !GetAtt AppSyncApiReceptacle.Arn
+    Export:
+      Name: AppSyncApiArn
+  AppSyncApiEndpoint:
+    Value: !GetAtt AppSyncApiReceptacle.GraphQLUrl
+    Export:
+      Name: AppSyncApiEndpoint

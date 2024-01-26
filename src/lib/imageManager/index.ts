@@ -19,7 +19,7 @@ export class ImageManager {
     return this.s3.upload({
       Body: buffer,
       Key: v4(),
-      Bucket: environment.region,
+      Bucket: environment.bucketImage,
       ContentType: "image/png",
     });
   }

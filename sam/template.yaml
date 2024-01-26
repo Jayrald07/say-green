@@ -48,6 +48,8 @@ Resources:
     DependsOn: AppSyncReceptacleStack
     Properties:
       Location: ./cognito/identityPool.yaml
+      Parameters:
+        BucketName: !Ref BucketImageName
 
 Outputs:
   IdentityPoolId:

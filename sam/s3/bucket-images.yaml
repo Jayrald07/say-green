@@ -17,6 +17,9 @@ Resources:
           - AllowedMethods:
               - "GET"
               - "POST"
+              - "PUT"
             AllowedOrigins:
               - !Ref WebDomain
+            AllowedHeaders: 
+              - "*"
         

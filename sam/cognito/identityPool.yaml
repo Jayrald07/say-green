@@ -3,6 +3,9 @@ Transform: AWS::Serverless-2016-10-31
 Description: >
   Identity Pool for Say Green
 
+Parameters:
+  BucketName:
+    Type: String
 
 Resources:
   IdentityPoolStack:
@@ -34,6 +37,18 @@ Resources:
               - Effect: Allow
                 Action: "appsync:GraphQL"
                 Resource: !ImportValue AppSyncApiArn
+        - PolicyName: bucketImageAccess
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action:
+                  - "s3:PutObject"
+                Resource: !Join
+                  - ''
+                  - - 'arn:aws:s3:::'
+                    - !Ref BucketName
+                    - /*
 
   IdentityPoolUnauthenticatedRoleAttachment:
     Type: AWS::Cognito::IdentityPoolRoleAttachment

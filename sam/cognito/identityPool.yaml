@@ -29,6 +29,22 @@ Resources:
                 cognito-identity.amazonaws.com:aud: !Ref IdentityPoolStack
               ForAnyValue:StringLike:
                 cognito-identity.amazonaws.com:amr: unauthenticated
+
+  IdentityPoolAuthenticatedAccessRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal: 
+              Federated: cognito-identity.amazonaws.com
+            Action: sts:AssumeRoleWithWebIdentity
+            Condition:
+              StringEquals:
+                cognito-identity.amazonaws.com:aud: !Ref IdentityPoolStack
+              ForAnyValue:StringLike:
+                cognito-identity.amazonaws.com:amr: authenticated
       Policies: 
         - PolicyName: appSyncAccess
           PolicyDocument:
@@ -56,6 +72,7 @@ Resources:
       IdentityPoolId: !Ref IdentityPoolStack
       Roles:
         unauthenticated: !GetAtt IdentityPoolUnauthenticatedAccessRole.Arn
+        authenticated: !GetAtt IdentityPoolAuthenticatedAccessRole.Arn
 
 Outputs:
   IdentityPoolId:

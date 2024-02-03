@@ -1,6 +1,7 @@
 export enum MapControllerType {
   Receptacle,
   UploadImage,
+  SignOut,
 }
 
 export type MapController = {

@@ -8,7 +8,7 @@ export function ProgressBar(props: Readonly<ProgressBarProps>) {
     <>
       <small className="block text-xs mb-2 text-ellipsis overflow-hidden select-none">{label}</small>
       <div className="w-full h-2 overflow-hidden rounded-full shadow-inner">
-        <span style={{ width: progress + "%" }} className="bg-orange-500 h-full block"></span>
+        <span style={{ width: progress + "%" }} className="bg-orange-500 h-full block transition-all"></span>
       </div>
     </>
   );

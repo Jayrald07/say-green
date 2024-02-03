@@ -1,4 +1,4 @@
-import { faCamera, faDotCircle } from "@fortawesome/free-solid-svg-icons";
+import { faCamera, faDotCircle, faSignOut } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { MapController, MapControllerType } from "./types";
@@ -26,6 +26,9 @@ export default function MapController(props: Readonly<MapController>) {
         </button>
         <button onClick={() => handleClickController(MapControllerType.UploadImage)}>
           <FontAwesomeIcon icon={faCamera} />
+        </button>
+        <button onClick={() => handleClickController(MapControllerType.SignOut)}>
+          <FontAwesomeIcon icon={faSignOut} />
         </button>
       </section>
     </>

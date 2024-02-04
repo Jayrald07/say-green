@@ -67,8 +67,4 @@ jobs:
           echo "appSyncApiEndpoint=$appSyncApiEndpoint" >> "$GITHUB_OUTPUT"
           echo "identityPoolId=$identityPoolId" >> "$GITHUB_OUTPUT"
           echo "userPoolId=$userPoolId" >> "$GITHUB_OUTPUT"
-<<<<<<< HEAD
           echo "userPoolClientId=$userPoolClientId" >> "$GITHUB_OUTPUT"
-=======
-          echo "userPoolClientId=$userPoolClientId" >> "$GITHUB_OUTPUT"
->>>>>>> 5b29f37 (Fix cognito outputs name)

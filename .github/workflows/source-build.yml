@@ -12,6 +12,12 @@ on:
       identityPoolId:
         required: true
         type: string
+      userPoolId:
+        required: true
+        type: string
+      userPoolClientId:
+        required: true
+        type: string
     secrets:
       AWS_ACCESS_KEY_ID:
         required: true
@@ -43,9 +49,13 @@ jobs:
           --arg cognitoPoolId ${{ inputs.identityPoolId }} \
           --arg appSyncApiEndpoint ${{ inputs.appSyncApiEndpoint }} \
           --arg appSyncAuthType ${{ vars.APPSYNC_AUTH_TYPE }} \
+          --arg cognitoUserPoolId ${{ inputs.userPoolId }} \
+          --arg cognitoUserPoolWebClientId ${{ inputs.userPoolClientId }} \
           '{
             "aws_cognito_region": $region,
             "aws_cognito_identity_pool_id": $cognitoPoolId,
+            "aws_user_pools_id": $cognitoUserPoolId,
+            "aws_user_pools_web_client_id": $cognitoUserPoolWebClientId,
             "aws_project_region": $region,
             "aws_appsync_graphqlEndpoint": $appSyncApiEndpoint,
             "aws_appsync_region": $region,

@@ -1,0 +1,40 @@
+name: Say Green Deployment
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  staging-resources:
+    uses: ./.github/workflows/resources.yml
+    with:
+      environment: staging
+    secrets: inherit
+
+  staging-static-site:
+    uses: ./.github/workflows/source-build.yml
+    needs: staging-resources
+    with:
+      environment: staging
+      appSyncApiEndpoint: ${{ needs.staging-resources.outputs.appSyncApiEndpoint }}
+      identityPoolId: ${{ needs.staging-resources.outputs.identityPoolId }}
+      userPoolId: ${{ needs.staging-resources.outputs.userPoolId }}
+      userPoolClientId: ${{ needs.staging-resources.outputs.userPoolClientId }}
+    secrets: inherit
+
+  production-resources:
+    uses: ./.github/workflows/resources.yml
+    with:
+      environment: production
+    secrets: inherit
+
+  production-static-site:
+    uses: ./.github/workflows/source-build.yml
+    needs: production-resources
+    with:
+      environment: production
+      appSyncApiEndpoint: ${{ needs.production-resources.outputs.appSyncApiEndpoint }}
+      identityPoolId: ${{ needs.production-resources.outputs.identityPoolId }}
+      userPoolId: ${{ needs.staging-resources.outputs.userPoolId }}
+      userPoolClientId: ${{ needs.staging-resources.outputs.userPoolClientId }}
+    secrets: inherit

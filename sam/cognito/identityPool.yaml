@@ -13,6 +13,37 @@ Resources:
     Properties:
       IdentityPoolName: IdentityPoolSayGreen
       AllowUnauthenticatedIdentities: true
+      CognitoIdentityProviders:
+        - ClientId: !GetAtt UserPoolClientStack.ClientId
+          ProviderName: !GetAtt UserPoolStack.ProviderName
+  
+  UserPoolStack:
+    Type: AWS::Cognito::UserPool
+    Properties:
+      UserPoolName: UserPoolSayGreen
+      EnabledMfas:
+        - "SOFTWARE_TOKEN_MFA"
+      MfaConfiguration: "ON"
+      AdminCreateUserConfig:
+        AllowAdminCreateUserOnly: true
+      AccountRecoverySetting:
+        RecoveryMechanisms:
+          - Name: admin_only
+            Priority: 1
+      EmailConfiguration:
+        EmailSendingAccount: COGNITO_DEFAULT
+      AutoVerifiedAttributes:
+        - "email"
+      UsernameAttributes:
+        - "email"
+      UsernameConfiguration:
+        CaseSensitive: true
+
+  UserPoolClientStack:
+    Type: AWS::Cognito::UserPoolClient
+    Properties:
+      UserPoolId: !GetAtt UserPoolStack.UserPoolId
+      ClientName: UserPoolClientSayGreen
 
   IdentityPoolUnauthenticatedAccessRole:
     Type: AWS::IAM::Role
@@ -79,3 +110,11 @@ Outputs:
     Value: !Ref IdentityPoolStack
     Export:
       Name: IdentityPoolId
+  UserPoolId:
+    Value: !GetAtt UserPoolStack.UserPoolId
+    Export:
+      Name: UserPoolId
+  UserPoolClientId:
+    Value: !GetAtt UserPoolClientStack.ClientId
+    Export:
+      Name: UserPoolClientId

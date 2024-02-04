@@ -60,5 +60,5 @@ jobs:
           userPoolClientId=$(jq -r '.[] | select(.OutputKey == "UserPoolClientId").OutputValue' outputs.json)
           echo "appSyncApiEndpoint=$appSyncApiEndpoint" >> "$GITHUB_OUTPUT"
           echo "identityPoolId=$identityPoolId" >> "$GITHUB_OUTPUT"
-          echo "identityPoolId=$userPoolId" >> "$GITHUB_OUTPUT"
-          echo "identityPoolId=$userPoolClientId" >> "$GITHUB_OUTPUT"
+          echo "userPoolId=$userPoolId" >> "$GITHUB_OUTPUT"
+          echo "userPoolClientId=$userPoolClientId" >> "$GITHUB_OUTPUT"

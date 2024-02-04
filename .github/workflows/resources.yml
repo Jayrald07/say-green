@@ -56,5 +56,9 @@ jobs:
         run: |
           appSyncApiEndpoint=$(jq -r '.[] | select(.OutputKey == "AppSyncApiEndpoint").OutputValue' outputs.json)
           identityPoolId=$(jq -r '.[] | select(.OutputKey == "IdentityPoolId").OutputValue' outputs.json)
+          userPoolId=$(jq -r '.[] | select(.OutputKey == "UserPoolId").OutputValue' outputs.json)
+          userPoolClientId=$(jq -r '.[] | select(.OutputKey == "UserPoolClientId").OutputValue' outputs.json)
           echo "appSyncApiEndpoint=$appSyncApiEndpoint" >> "$GITHUB_OUTPUT"
           echo "identityPoolId=$identityPoolId" >> "$GITHUB_OUTPUT"
+          echo "identityPoolId=$userPoolId" >> "$GITHUB_OUTPUT"
+          echo "identityPoolId=$userPoolClientId" >> "$GITHUB_OUTPUT"

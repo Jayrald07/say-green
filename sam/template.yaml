@@ -54,5 +54,9 @@ Resources:
 Outputs:
   IdentityPoolId:
     Value: !GetAtt IdentityPoolStack.Outputs.IdentityPoolId
+  UserPoolId:
+    Value: !GetAtt IdentityPoolStack.Outputs.UserPoolId
+  UserPoolClientId:
+    Value: !GetAtt IdentityPoolStack.Outputs.UserPoolClientId
   AppSyncApiEndpoint:
     Value: !GetAtt AppSyncReceptacleStack.Outputs.AppSyncApiEndpoint

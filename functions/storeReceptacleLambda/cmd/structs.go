@@ -1,4 +1,4 @@
-package main
+package storeReceptacleLambda
 
 type receptacleLocation struct {
 	Hash      *string  `json:"hash,omitempty"`

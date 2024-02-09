@@ -1,4 +1,4 @@
-package main
+package storeReceptacleLambda
 
 import (
 	"context"

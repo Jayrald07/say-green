@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { MapController, MapControllerType } from "./types";
 import { getCurrentMode } from "./utils";
+import { signOut } from "aws-amplify/auth";
 
 export default function MapController(props: Readonly<MapController>) {
   const { onClick } = props;
@@ -13,6 +14,11 @@ export default function MapController(props: Readonly<MapController>) {
       onClick(controllerType);
       setControllerType(controllerType);
     }
+  };
+
+  const handleLogout = async () => {
+    await signOut({ global: true });
+    location.href = "/login";
   };
 
   return (
@@ -27,7 +33,7 @@ export default function MapController(props: Readonly<MapController>) {
         <button onClick={() => handleClickController(MapControllerType.UploadImage)}>
           <FontAwesomeIcon icon={faCamera} />
         </button>
-        <button onClick={() => handleClickController(MapControllerType.SignOut)}>
+        <button onClick={handleLogout}>
           <FontAwesomeIcon icon={faSignOut} />
         </button>
       </section>

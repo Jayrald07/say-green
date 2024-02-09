@@ -1,11 +1,11 @@
-package main
+package storeReceptacleLambda
 
 import (
 	"context"
 	"errors"
 )
 
-func handler(ctx context.Context, lambdaInput lambdaInput) (interface{}, error) {
+func Handler(ctx context.Context, lambdaInput lambdaInput) (interface{}, error) {
 	err := validateInput(&lambdaInput)
 	if err != nil {
 		return nil, err

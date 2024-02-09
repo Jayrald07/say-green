@@ -25,3 +25,4 @@ amplifytools.xcconfig
 .env
 sam/*.aws-sam
 sam/*.toml
+.aws-sam

@@ -1,4 +1,4 @@
-package main
+package storeReceptacleLambda
 
 import (
 	"context"
@@ -45,7 +45,7 @@ func TestHandlerGetReceptacle(t *testing.T) {
 		Type: aws.String("get"),
 	}
 
-	response, err := handler(context.TODO(), testingData)
+	response, err := Handler(context.TODO(), testingData)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -62,7 +62,7 @@ func TestHandlerCreateReceptacle(t *testing.T) {
 		},
 	}
 
-	response, err := handler(context.TODO(), testingData)
+	response, err := Handler(context.TODO(), testingData)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -78,7 +78,7 @@ func TestHandlerDeleteReceptacle(t *testing.T) {
 		},
 	}
 
-	response, err := handler(context.TODO(), testingData)
+	response, err := Handler(context.TODO(), testingData)
 	if err != nil {
 		t.Fatal(err)
 	}

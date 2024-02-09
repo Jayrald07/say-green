@@ -42,8 +42,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ vars.GENERAL_REGION }}
       - run: |
-          cd sam && \
-          sam build --use-container --build-image public.ecr.aws/sam/build-go1.x && \
+          sam build --template-file sam/template.yaml --use-container --build-image public.ecr.aws/sam/build-go1.x && \
           sam deploy \
             --no-confirm-changeset \
             --no-fail-on-empty-changeset \

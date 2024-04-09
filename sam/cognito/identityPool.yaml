@@ -16,7 +16,7 @@ Resources:
       CognitoIdentityProviders:
         - ClientId: !GetAtt UserPoolClientStack.ClientId
           ProviderName: !GetAtt UserPoolStack.ProviderName
-  
+
   UserPoolStack:
     Type: AWS::Cognito::UserPool
     Properties:
@@ -52,7 +52,7 @@ Resources:
         Version: 2012-10-17
         Statement:
           - Effect: Allow
-            Principal: 
+            Principal:
               Federated: cognito-identity.amazonaws.com
             Action: sts:AssumeRoleWithWebIdentity
             Condition:
@@ -68,7 +68,7 @@ Resources:
         Version: 2012-10-17
         Statement:
           - Effect: Allow
-            Principal: 
+            Principal:
               Federated: cognito-identity.amazonaws.com
             Action: sts:AssumeRoleWithWebIdentity
             Condition:
@@ -76,14 +76,17 @@ Resources:
                 cognito-identity.amazonaws.com:aud: !Ref IdentityPoolStack
               ForAnyValue:StringLike:
                 cognito-identity.amazonaws.com:amr: authenticated
-      Policies: 
+      Policies:
         - PolicyName: appSyncAccess
           PolicyDocument:
             Version: 2012-10-17
             Statement:
               - Effect: Allow
                 Action: "appsync:GraphQL"
-                Resource: !ImportValue AppSyncApiArn
+                Resource: !Join
+                  - ""
+                  - - !ImportValue AppSyncApiArn
+                    - /*
         - PolicyName: bucketImageAccess
           PolicyDocument:
             Version: 2012-10-17
@@ -92,8 +95,8 @@ Resources:
                 Action:
                   - "s3:PutObject"
                 Resource: !Join
-                  - ''
-                  - - 'arn:aws:s3:::'
+                  - ""
+                  - - "arn:aws:s3:::"
                     - !Ref BucketName
                     - /*
 

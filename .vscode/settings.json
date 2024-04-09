@@ -1,5 +1,8 @@
 {
-    "yaml.schemas": {
-        "https://raw.githubusercontent.com/aws/serverless-application-model/main/samtranslator/schema/schema.json": "file:///home/jayrald/receptacle-plotter/web/sam/cognito/identityPool.yaml"
-    }
+  "yaml.schemas": {
+    "https://raw.githubusercontent.com/aws/serverless-application-model/main/samtranslator/schema/schema.json": [
+      "file:///home/jayrald/receptacle-plotter/web/sam/cognito/identityPool.yaml",
+      "file:///home/jayrald/say-green/sam/cognito/identityPool.yaml"
+    ]
+  }
 }

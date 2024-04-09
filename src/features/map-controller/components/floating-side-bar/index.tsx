@@ -20,7 +20,7 @@ export default (props: PropsWithChildren) => {
         <Button
           key={buttonController.id}
           data-active={buttonController.id == activeController?.id}
-          className="border-0 py-3 text-xl hover:bg-slate-600 hover:text-white rounded-none data-[active=true]:bg-slate-600 data-[active=true]:text-white"
+          className="border-0 py-3 text-xl hover:bg-slate-200 hover:text-slate-600 rounded-none data-[active=true]:bg-slate-600 data-[active=true]:text-white"
           onClick={() => {
             handleControllerClick(buttonController);
           }}

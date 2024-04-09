@@ -10,5 +10,5 @@ export enum ApiCallStatus {
 export type MapClickEvent = {
   lat: number;
   lng: number;
-  map: Map;
+  map: Map | null;
 };

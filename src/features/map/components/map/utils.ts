@@ -19,7 +19,7 @@ export const startMap = async (elementContainer: HTMLElement | null): Promise<Ma
         bearing: -17,
       });
 
-      map.addControl(new NavigationControl());
+      // map.addControl(new NavigationControl());
 
       resolve(map);
     });

@@ -1,15 +1,15 @@
 {
-  "dev": {
+  "local": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-receptacle-dev-184816-authRole",
-      "UnauthRoleArn": "arn:aws:iam::811134646616:role/amplify-receptacle-dev-184816-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::811134646616:role/amplify-receptacle-dev-184816-authRole",
-      "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-receptacle-dev-184816-deployment",
-      "UnauthRoleName": "amplify-receptacle-dev-184816-unauthRole",
-      "StackName": "amplify-receptacle-dev-184816",
-      "StackId": "arn:aws:cloudformation:us-east-1:811134646616:stack/amplify-receptacle-dev-184816/80986e00-7a36-11ee-a214-12d1774c641b",
-      "AmplifyAppId": "diao2bro43bjg"
+      "AuthRoleName": "amplify-receptacle-local-e4348-authRole",
+      "UnauthRoleArn": "arn:aws:iam::811134646616:role/amplify-receptacle-local-e4348-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::811134646616:role/amplify-receptacle-local-e4348-authRole",
+      "Region": "ap-southeast-1",
+      "DeploymentBucketName": "amplify-receptacle-local-e4348-deployment",
+      "UnauthRoleName": "amplify-receptacle-local-e4348-unauthRole",
+      "StackName": "amplify-receptacle-local-e4348",
+      "StackId": "arn:aws:cloudformation:ap-southeast-1:811134646616:stack/amplify-receptacle-local-e4348/ef37cf50-f0f5-11ee-a773-068db81a6f53",
+      "AmplifyAppId": "d3vy6dk80xx4v1"
     }
   }
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import Plotter from "./pages/plotter";
+import Main from "./pages/main";
 import "./index.css";
 import { createBrowserRouter, redirect, RouterProvider } from "react-router-dom";
 import { ErrorPage } from "./components/ErrorPage";
@@ -12,7 +12,7 @@ const root = createRoot(document.getElementById("root") as Element);
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Plotter />,
+    element: <Main />,
     errorElement: <ErrorPage />,
   },
   {

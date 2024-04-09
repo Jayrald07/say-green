@@ -1,15 +1,15 @@
 import React, { PropsWithChildren, useCallback, useEffect, useRef, useState } from "react";
-import mapboxgl, { Map } from "mapbox-gl";
+import mapboxgl, { Map as MBMap } from "mapbox-gl";
 import { renderAs3d, renderBoundary, startMap } from "./utils";
 import { TMap } from "./types";
 
 mapboxgl.accessToken = process.env.MAPBOX_GL_ACCESS_TOKEN as string;
 
-const CMap = (props: PropsWithChildren<TMap>) => {
+const Map = (props: PropsWithChildren<TMap>) => {
   const { onClick } = props;
 
   const mapContainer = useRef<HTMLDivElement>(null);
-  const [map, setMap] = useState<Map | null>(null);
+  const [map, setMap] = useState<MBMap | null>(null);
 
   const initializeMap = async () => {
     const mapInstance = await startMap(mapContainer.current);
@@ -60,4 +60,4 @@ const CMap = (props: PropsWithChildren<TMap>) => {
   return <div ref={mapContainer} style={{ height: "100vh" }} />;
 };
 
-export default CMap;
+export default Map;

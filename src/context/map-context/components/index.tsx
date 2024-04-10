@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useState } from "react";
+import React, { ComponentType, FunctionComponent, PropsWithChildren, useState } from "react";
 import MapContextProvider from "..";
 import Map from "@/features/map/components/map";
 import { MapClickEvent } from "@/types";

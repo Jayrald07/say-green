@@ -3,7 +3,7 @@ import { buttonControllers } from "../../config/controllers";
 import Button from "@/components/Button";
 import MapControllerContextProvider from "@/context/map-controller-context";
 
-export default (props: PropsWithChildren) => {
+export default function MapController(props: PropsWithChildren) {
   const { activeController, toggleController } = useContext(MapControllerContextProvider);
 
   const handleControllerClick = (buttonController: (typeof buttonControllers)[0]) => {
@@ -30,4 +30,4 @@ export default (props: PropsWithChildren) => {
       ))}
     </section>
   );
-};
+}

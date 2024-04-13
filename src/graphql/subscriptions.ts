@@ -16,6 +16,6 @@ export const onCreateReceptacleLocation = /* GraphQL */ `subscription OnCreateRe
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnCreateReceptacleLocationSubscription,
+  APITypes.OnCreateReceptacleLocationSubscriptionVariables,
   APITypes.OnCreateReceptacleLocationSubscription
 >;

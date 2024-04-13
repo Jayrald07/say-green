@@ -15,4 +15,7 @@ export const getReceptacleLocation = /* GraphQL */ `query GetReceptacleLocation 
     __typename
   }
 }
-` as GeneratedQuery<APITypes.GetReceptacleLocationQuery, APITypes.GetReceptacleLocationQuery>;
+` as GeneratedQuery<
+  APITypes.GetReceptacleLocationQueryVariables,
+  APITypes.GetReceptacleLocationQuery
+>;

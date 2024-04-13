@@ -1,7 +1,7 @@
-import { ImageManager } from "@/lib/imageManager";
+import { ImageManager } from "@app/lib/imageManager";
 import { useEffect, useRef, useState } from "react";
 import { fetchAuthSession } from "aws-amplify/auth";
-import { Image } from "@/types/declarations";
+import { Image } from "@app/types/declarations";
 
 export const useImageUploader = () => {
   const imageManager = useRef<ImageManager>();

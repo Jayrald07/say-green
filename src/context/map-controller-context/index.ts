@@ -1,4 +1,4 @@
-import { Controller } from "@/features/map-controller/config/controllers";
+import { Controller } from "@app/features/map-controller/config/controllers";
 import React from "react";
 
 type MapControllerContext = {

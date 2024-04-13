@@ -1,7 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import Main from "./pages/main";
 import "./index.css";
+import Main from "./pages/main";
 import { createBrowserRouter, redirect, RouterProvider } from "react-router-dom";
 import { ErrorPage } from "./components/ErrorPage";
 import { Login } from "./pages/login";

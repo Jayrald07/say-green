@@ -1,5 +1,5 @@
-import MapContextProvider from "@/context/map-context";
-import MapControllerContextProvider from "@/context/map-controller-context";
+import MapContextProvider from "@app/context/map-context";
+import MapControllerContextProvider from "@app/context/map-controller-context";
 import React, { useContext, useEffect } from "react";
 
 export default () => {

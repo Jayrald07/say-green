@@ -2,10 +2,9 @@ import React from "react";
 import { faCamera, faDotCircle, faSignOut } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { signOut } from "aws-amplify/auth";
-import { Map } from "mapbox-gl";
-import { createReceptacle } from "@/lib/receptacle";
-import { renderReceptacle } from "@/pages/main/utils";
-import { MapClickEvent } from "@/types";
+import { createReceptacle } from "@app/lib/receptacle";
+import { renderReceptacle } from "@app/pages/main/utils";
+import { MapClickEvent } from "@app/types";
 
 export type Controller = {
   id: string;

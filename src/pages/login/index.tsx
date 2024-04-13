@@ -1,9 +1,9 @@
 import React from "react";
 import "@aws-amplify/ui-react/styles.css";
 import { Authenticator } from "@aws-amplify/ui-react";
-import amplifyConfig from "@/amplifyconfiguration.json";
+import amplifyConfig from "@app/amplifyconfiguration.json";
 import { Amplify } from "aws-amplify";
-import Redirect from "@/components/Redirect";
+import Redirect from "@app/components/Redirect";
 
 Amplify.configure(amplifyConfig);
 

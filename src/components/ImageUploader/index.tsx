@@ -4,7 +4,7 @@ import { Modal } from "../Modal";
 import { ProgressBar } from "../ProgressBar";
 import { InputFile } from "../InputFile";
 import Button from "../Button";
-import { useImageUploader } from "@/lib/imageManager/hooks/useImageUploader";
+import { useImageUploader } from "@app/lib/imageManager/hooks/useImageUploader";
 
 export default function ImageUploader(props: Readonly<PropsWithChildren & { open: boolean; onClose: () => void }>) {
   const { open, onClose } = props;

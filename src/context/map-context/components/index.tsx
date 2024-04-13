@@ -1,7 +1,7 @@
 import React, { ComponentType, FunctionComponent, PropsWithChildren, useState } from "react";
 import MapContextProvider from "..";
-import Map from "@/features/map/components/map";
-import { MapClickEvent } from "@/types";
+import Map from "@app/features/map/components/map";
+import { MapClickEvent } from "@app/types";
 
 export default function MapContext(props: PropsWithChildren) {
   const { children } = props;

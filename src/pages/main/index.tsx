@@ -1,11 +1,11 @@
 import React from "react";
 import { Amplify } from "aws-amplify";
-import amplifyconfiguration from "@/amplifyconfiguration.json";
-import MapContext from "@/context/map-context/components";
-import MapControllerContext from "@/context/map-controller-context/components";
-import ControllerRunner from "@/features/map-controller/components/controller-runner";
-import MapController from "@/features/map-controller/components/floating-side-bar";
-import Authorization from "@/components/authorization";
+import amplifyconfiguration from "@app/amplifyconfiguration.json";
+import MapContext from "@app/context/map-context/components";
+import MapControllerContext from "@app/context/map-controller-context/components";
+import ControllerRunner from "@app/features/map-controller/components/controller-runner";
+import MapController from "@app/features/map-controller/components/floating-side-bar";
+import Authorization from "@app/components/authorization";
 
 Amplify.configure(amplifyconfiguration);
 

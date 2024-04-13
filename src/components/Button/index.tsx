@@ -1,6 +1,6 @@
 import React, { ButtonHTMLAttributes, PropsWithChildren } from "react";
 
-export default function Button(props: PropsWithChildren<ButtonHTMLAttributes<HTMLButtonElement>>) {
+function Button(props: PropsWithChildren<ButtonHTMLAttributes<HTMLButtonElement>>) {
   const { className, children, ...rest } = props;
 
   return (
@@ -12,3 +12,5 @@ export default function Button(props: PropsWithChildren<ButtonHTMLAttributes<HTM
     </button>
   );
 }
+
+export default Button;

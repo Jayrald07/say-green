@@ -1,4 +1,4 @@
-import { LatLng } from "@/types/declarations";
+import { LatLng } from "@app/types/declarations";
 import { useState } from "react";
 import { createReceptacle, deleteReceptacle, getReceptacles } from "..";
 

@@ -1,6 +1,6 @@
-import { createReceptacleLocation, deleteReceptacleLocation } from "@/graphql/mutations";
-import { getReceptacleLocation } from "@/graphql/queries";
-import { LatLng } from "@/types/declarations";
+import { createReceptacleLocation, deleteReceptacleLocation } from "@app/graphql/mutations";
+import { getReceptacleLocation } from "@app/graphql/queries";
+import { LatLng } from "@app/types/declarations";
 import { generateClient } from "aws-amplify/api";
 
 const client = generateClient();

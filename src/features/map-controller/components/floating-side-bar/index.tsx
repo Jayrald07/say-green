@@ -1,7 +1,7 @@
 import React, { PropsWithChildren, useContext } from "react";
 import { buttonControllers } from "../../config/controllers";
-import Button from "@/components/Button";
-import MapControllerContextProvider from "@/context/map-controller-context";
+import Button from "@app/components/Button";
+import MapControllerContextProvider from "@app/context/map-controller-context";
 
 export default function MapController(props: PropsWithChildren) {
   const { activeController, toggleController } = useContext(MapControllerContextProvider);
@@ -15,9 +15,13 @@ export default function MapController(props: PropsWithChildren) {
   };
 
   return (
-    <section className="absolute top-2 left-2 flex flex-col bg-white rounded-lg text-slate-600 overflow-hidden shadow-lg">
+    <section
+      data-testid="controller"
+      className="absolute top-2 left-2 flex flex-col bg-white rounded-lg text-slate-600 overflow-hidden shadow-lg"
+    >
       {buttonControllers.map((buttonController) => (
         <Button
+          data-testid="controller-button"
           key={buttonController.id}
           data-active={buttonController.id == activeController?.id}
           className="border-0 py-3 text-xl hover:bg-slate-200 hover:text-slate-600 rounded-none data-[active=true]:bg-slate-600 data-[active=true]:text-white"

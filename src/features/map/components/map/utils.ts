@@ -1,4 +1,4 @@
-import { LatLng } from "@/types/declarations";
+import { LatLng } from "@app/types/declarations";
 import { Map, NavigationControl } from "mapbox-gl";
 
 export const startMap = async (elementContainer: HTMLElement | null): Promise<Map> => {

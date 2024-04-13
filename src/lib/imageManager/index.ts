@@ -1,4 +1,4 @@
-import { environment } from "@/constants";
+import { environment } from "@app/constants";
 import AWS from "aws-sdk";
 import { CredentialsOptions } from "aws-sdk/lib/credentials";
 import { v4 } from "uuid";

@@ -1,6 +1,6 @@
 import React, { PropsWithChildren, useState } from "react";
 import MapControllerContextProvider from "..";
-import { Controller } from "@/features/map-controller/config/controllers";
+import { Controller } from "@app/features/map-controller/config/controllers";
 
 export default function (props: PropsWithChildren) {
   const { children } = props;

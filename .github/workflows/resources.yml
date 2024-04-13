@@ -45,7 +45,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ vars.GENERAL_REGION }}
       - run: |
-          sam build --template-file sam/template.yaml && \
+          sam build --template-file infrastructure/template.yaml && \
           sam deploy \
             --no-confirm-changeset \
             --no-fail-on-empty-changeset \

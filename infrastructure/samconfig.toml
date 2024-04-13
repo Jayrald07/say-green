@@ -1,0 +1,9 @@
+version = 0.1
+[default.deploy.parameters]
+stack_name = "dev-say-green"
+resolve_s3 = true
+s3_prefix = "dev-say-green"
+region = "ap-southeast-1"
+capabilities = "CAPABILITY_IAM CAPABILITY_AUTO_EXPAND"
+parameter_overrides = "WebDomain=\"https://localhost:1234\" BucketImageName=\"dev-say-green-image\" BucketStaticSiteName=\"dev.jayraldempino.pro\""
+image_repositories = []

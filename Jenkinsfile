@@ -3,7 +3,9 @@ pipeline {
 
     stages {
         stage('Pull repository') {
-            echo 'pulling...'
+            steps{
+                echo 'Pulling...'
+            }
         }
     }
 }

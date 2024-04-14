@@ -1,10 +1,12 @@
 pipeline {
     agent any
 
+    checkout scm
+
     stages {
         stage('Pull repository') {
             steps{
-                echo 'Pulling...'
+                git clone 
             }
         }
     }

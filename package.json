@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.24.1",
+    "@faker-js/faker": "^8.4.1",
     "@parcel/reporter-bundle-analyzer": "^2.12.0",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^15.0.1",

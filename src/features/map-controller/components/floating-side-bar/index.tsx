@@ -1,10 +1,13 @@
-import React, { PropsWithChildren, useContext } from "react";
+import React, { PropsWithChildren, useContext, useState } from "react";
 import { buttonControllers } from "../../config/controllers";
 import Button from "@app/components/Button";
 import MapControllerContextProvider from "@app/context/map-controller-context";
+import { Dialog, DialogContent } from "@app/ui/dialog";
 
-export default function MapController(props: PropsWithChildren) {
+export default function MapController(props: Readonly<PropsWithChildren>) {
   const { activeController, toggleController } = useContext(MapControllerContextProvider);
+
+  const [open, setOpen] = useState(true);
 
   const handleControllerClick = (buttonController: (typeof buttonControllers)[0]) => {
     if (buttonController.onClick) {
@@ -19,6 +22,9 @@ export default function MapController(props: PropsWithChildren) {
       data-testid="controller"
       className="absolute top-2 left-2 flex flex-col bg-white rounded-lg text-slate-600 overflow-hidden shadow-lg"
     >
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent>Sample</DialogContent>
+      </Dialog>
       {buttonControllers.map((buttonController) => (
         <Button
           data-testid="controller-button"

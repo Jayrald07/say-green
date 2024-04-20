@@ -2,6 +2,11 @@ AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: >
 
+Parameters:
+  DynamoDbArn:
+    Type: String
+    Default: !ImportValue DynamoDbArn
+
 Resources:
   StoreReceptacleFunction:
     Type: AWS::Serverless::Function
@@ -23,9 +28,7 @@ Resources:
                 - "dynamodb:DeleteItem"
                 - "dynamodb:Query"
               Resource:
-                - !Sub
-                  - "${DynamoDbArn}/*"
-                  - DynamoDbArn: !ImportValue DynamoDbArn
+                - !Sub "${DynamoDbArn}/*"
                 - !ImportValue DynamoDbArn
 
 Outputs:

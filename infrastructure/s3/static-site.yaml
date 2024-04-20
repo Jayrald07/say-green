@@ -27,4 +27,4 @@ Resources:
               - "s3:GetObject"
             Effect: Allow
             Principal: "*"
-            Resource: !Sub "arn:aws:s3:${AWS::Region}:${AWS::AccountId}:${S3Bucket}"
+            Resource: !Sub "arn:aws:s3:::${BucketName}/*"

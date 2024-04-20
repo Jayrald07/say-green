@@ -1,6 +1,10 @@
-AWSTemplateFormatVersion: '2010-09-09'
+AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
-Description: ''
+Description: ""
+
+Parameters:
+  StoreReceptacleFunctionArn:
+    Type: String
 
 Resources:
   AppSyncApiReceptacle:
@@ -24,7 +28,7 @@ Resources:
       Name: StoreReceptacle
       Type: AWS_LAMBDA
       LambdaConfig:
-        LambdaFunctionArn: !ImportValue StoreReceptacleFunctionArn
+        LambdaFunctionArn: !Ref StoreReceptacleFunctionArn
       ServiceRoleArn: !GetAtt LambdaDataSourceServiceStoreReceptacleRole.Arn
 
   AppSyncDeleteReceptacleDataSource:
@@ -34,14 +38,13 @@ Resources:
       Name: DeleteReceptacle
       Type: AWS_LAMBDA
       LambdaConfig:
-        LambdaFunctionArn: !ImportValue StoreReceptacleFunctionArn
+        LambdaFunctionArn: !Ref StoreReceptacleFunctionArn
       ServiceRoleArn: !GetAtt LambdaDataSourceServiceStoreReceptacleRole.Arn
 
   AppSyncApiReceptacleResolver:
     Type: AWS::AppSync::Resolver
     DependsOn:
       - AppSyncSchemaReceptacle
-      - AppSyncStoreReceptacleDataSource
     Properties:
       ApiId: !GetAtt AppSyncApiReceptacle.ApiId
       Kind: UNIT
@@ -85,7 +88,6 @@ Resources:
     Type: AWS::AppSync::Resolver
     DependsOn:
       - AppSyncSchemaReceptacle
-      - AppSyncStoreReceptacleDataSource
     Properties:
       ApiId: !GetAtt AppSyncApiReceptacle.ApiId
       Kind: UNIT
@@ -101,12 +103,12 @@ Resources:
       FieldName: getReceptacleLocation
       TypeName: Query
       DataSourceName: !GetAtt AppSyncStoreReceptacleDataSource.Name
-      
+
   LambdaDataSourceServiceStoreReceptacleRole:
     Type: AWS::IAM::Role
     Properties:
       AssumeRolePolicyDocument:
-        Version: '2012-10-17'
+        Version: "2012-10-17"
         Statement:
           - Effect: Allow
             Principal:
@@ -117,12 +119,12 @@ Resources:
       Policies:
         - PolicyName: LambdaFunctionGetSessionPolicy
           PolicyDocument:
-            Version: '2012-10-17'
+            Version: "2012-10-17"
             Statement:
               - Effect: Allow
                 Action:
                   - lambda:InvokeFunction
-                Resource: !ImportValue StoreReceptacleFunctionArn
+                Resource: !Ref StoreReceptacleFunctionArn
 
 Outputs:
   AppSyncApiArn:

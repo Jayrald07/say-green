@@ -15,18 +15,20 @@ Resources:
     Type: AWS::Serverless::Application
     Properties:
       Location: ./dynamodb/dynamoDbReceptacle.yaml
-  
+
   StoreReceptacleFunctionStack:
     Type: AWS::Serverless::Application
-    DependsOn: DynamoDbReceptacleStack
     Properties:
       Location: ./lambda/lambdaReceptacle.yaml
-  
+      Parameters:
+        DynamoDbArn: !GetAtt DynamoDbReceptacleStack.Outputs.DynamoDbArn
+
   AppSyncReceptacleStack:
-      Type: AWS::Serverless::Application
-      DependsOn: StoreReceptacleFunctionStack
-      Properties:
-        Location: ./appsync/appSyncReceptacle.yaml
+    Type: AWS::Serverless::Application
+    Properties:
+      Location: ./appsync/appSyncReceptacle.yaml
+      Parameters:
+        StoreReceptacleFunctionArn: !GetAtt StoreReceptacleFunctionStack.Outputs.StoreReceptacleFunctionArn
 
   S3BucketImagesStack:
     Type: AWS::Serverless::Application
@@ -42,14 +44,14 @@ Resources:
       Location: ./s3/static-site.yaml
       Parameters:
         BucketName: !Ref BucketStaticSiteName
-  
+
   IdentityPoolStack:
     Type: AWS::Serverless::Application
-    DependsOn: AppSyncReceptacleStack
     Properties:
       Location: ./cognito/identityPool.yaml
       Parameters:
         BucketName: !Ref BucketImageName
+        AppSyncApiArn: !GetAtt AppSyncReceptacleStack.Outputs.AppSyncApiArn
 
 Outputs:
   IdentityPoolId:

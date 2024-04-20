@@ -6,6 +6,8 @@ Description: >
 Parameters:
   BucketName:
     Type: String
+  AppSyncApiArn:
+    Type: String
 
 Resources:
   IdentityPoolStack:
@@ -83,10 +85,7 @@ Resources:
             Statement:
               - Effect: Allow
                 Action: "appsync:GraphQL"
-                Resource: !Join
-                  - ""
-                  - - !ImportValue AppSyncApiArn
-                    - /*
+                Resource: !Sub "${AppSyncApiArn}/*"
         - PolicyName: bucketImageAccess
           PolicyDocument:
             Version: 2012-10-17

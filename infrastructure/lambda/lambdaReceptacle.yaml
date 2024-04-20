@@ -5,7 +5,6 @@ Description: >
 Parameters:
   DynamoDbArn:
     Type: String
-    Default: !ImportValue DynamoDbArn
 
 Resources:
   StoreReceptacleFunction:
@@ -28,8 +27,8 @@ Resources:
                 - "dynamodb:DeleteItem"
                 - "dynamodb:Query"
               Resource:
+                - !Ref DynamoDbArn
                 - !Sub "${DynamoDbArn}/*"
-                - !ImportValue DynamoDbArn
 
 Outputs:
   StoreReceptacleFunctionArn:

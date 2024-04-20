@@ -23,7 +23,7 @@ Resources:
                 - "dynamodb:DeleteItem"
                 - "dynamodb:Query"
               Resource:
-                - !Sub 
+                - !Sub
                   - "${DynamoDbArn}/*"
                   - DynamoDbArn: !ImportValue DynamoDbArn
                 - !ImportValue DynamoDbArn
@@ -31,5 +31,5 @@ Resources:
 Outputs:
   StoreReceptacleFunctionArn:
     Value: !GetAtt StoreReceptacleFunction.Arn
-    Export: 
+    Export:
       Name: StoreReceptacleFunctionArn

@@ -94,11 +94,7 @@ Resources:
               - Effect: Allow
                 Action:
                   - "s3:PutObject"
-                Resource: !Join
-                  - ""
-                  - - "arn:aws:s3:::"
-                    - !Ref BucketName
-                    - /*
+                Resource: !Sub "arn:aws:s3:${AWS::Region}:${AWS::AccountId}:${S3Bucket}/*"
 
   IdentityPoolUnauthenticatedRoleAttachment:
     Type: AWS::Cognito::IdentityPoolRoleAttachment

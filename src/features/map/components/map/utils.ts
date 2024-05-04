@@ -10,7 +10,7 @@ export const startMap = async (elementContainer: HTMLElement | null): Promise<Ma
         zoom: 18,
         container: elementContainer as HTMLElement,
         center: [longitude, latitude],
-        style: "mapbox://styles/mapbox/light-v11",
+        style: "mapbox://styles/mapbox/dark-v11",
       });
 
       map.fitBounds([boundary.topLeft, boundary.bottomRight], {

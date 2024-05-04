@@ -11,15 +11,13 @@ Amplify.configure(amplifyconfiguration);
 
 export default () => {
   return (
-    <>
-      <MapContext>
-        <MapControllerContext>
-          <Authorization>
-            <ControllerRunner />
-            <MapController />
-          </Authorization>
-        </MapControllerContext>
-      </MapContext>
-    </>
+    <MapContext>
+      <MapControllerContext>
+        <Authorization>
+          <ControllerRunner />
+          <MapController />
+        </Authorization>
+      </MapControllerContext>
+    </MapContext>
   );
 };

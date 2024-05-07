@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import Main from "./pages/main";
 import { createBrowserRouter, redirect, RouterProvider } from "react-router-dom";
-import { ErrorPage } from "./components/ErrorPage";
+import { ErrorPage } from "./shared/components/ErrorPage";
 import { Login } from "./pages/login";
 import { getCurrentUser } from "aws-amplify/auth";
 

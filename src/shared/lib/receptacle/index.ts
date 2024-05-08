@@ -1,6 +1,5 @@
 import { createReceptacleLocation, deleteReceptacleLocation } from "@app/graphql/mutations";
 import { getReceptacleLocation } from "@app/graphql/queries";
-import { LatLng } from "@app/types/declarations";
 import { generateClient } from "aws-amplify/api";
 
 const client = generateClient();
@@ -14,7 +13,7 @@ export const getReceptacles = async () => {
     return;
   }
 
-  const receptacles: LatLng[] = JSON.parse(data.getReceptacleLocation.data);
+  const receptacles: { longitude: number; latitude: number }[] = JSON.parse(data.getReceptacleLocation.data);
 
   return receptacles;
 };
@@ -43,7 +42,7 @@ export const createReceptacle = async (longitude: number, latitude: number) => {
     return;
   }
 
-  const receptacle: LatLng = JSON.parse(data.createReceptacleLocation.data);
+  const receptacle: { longitude: number; latitude: number } = JSON.parse(data.createReceptacleLocation.data);
 
   return receptacle;
 };

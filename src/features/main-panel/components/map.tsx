@@ -1,27 +1,51 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
-import mapboxgl, { Map as MBMap } from "mapbox-gl";
+import React, { useContext, useEffect, useRef } from "react";
+import mapboxgl from "mapbox-gl";
 import { renderAs3d, renderBoundary, startMap } from "../utils";
 import { MapContext } from "../contexts/map-provider";
+import { MapControllerContext } from "../contexts/map-controller-provider";
+import { getReceptacles } from "@app/shared/lib/receptacle";
+import { renderReceptacle } from "@app/pages/main/utils";
 
 mapboxgl.accessToken = process.env.MAPBOX_GL_ACCESS_TOKEN as string;
 
 const Map = () => {
   const mapContainer = useRef<HTMLDivElement>(null);
-  const [map, setMap] = useState<MBMap | null>(null);
   const mapContext = useContext(MapContext);
+  const mapControllerContext = useContext(MapControllerContext);
 
   const initializeMap = async () => {
     const mapInstance = await startMap(mapContainer.current);
-    setMap(mapInstance);
+    mapContext?.setMap(mapInstance);
   };
 
-  const handleMapLoadEvent = () => {
-    if (!map) {
+  const handleRenderReceptacles = async () => {
+    const receptacles = await getReceptacles();
+
+    if (!receptacles) {
       return;
     }
 
-    renderAs3d(map);
-    renderBoundary(map);
+    if (!mapContext) {
+      return;
+    }
+
+    if (!mapContext.map) {
+      return;
+    }
+
+    receptacles.map((receptacle) => {
+      renderReceptacle({ lat: receptacle.latitude, lng: receptacle.longitude, map: mapContext.map });
+    });
+  };
+
+  const handleMapLoadEvent = () => {
+    if (!mapContext?.map) {
+      return;
+    }
+
+    renderAs3d(mapContext.map);
+    renderBoundary(mapContext.map);
+    handleRenderReceptacles();
   };
 
   useEffect(() => {
@@ -29,22 +53,29 @@ const Map = () => {
   }, [mapContext]);
 
   useEffect(() => {
+    if (mapContext) {
+      mapContext.setLatLng({ lat: 0, lng: 0 });
+    }
+  }, [mapControllerContext]);
+
+  useEffect(() => {
     initializeMap();
   }, []);
 
   useEffect(() => {
-    if (!map) {
+    if (!mapContext?.map) {
       return;
     }
 
-    map.on("click", ({ lngLat: { lat, lng } }) => {
+    mapContext.map.on("click", ({ lngLat: { lat, lng } }) => {
       mapContext?.setLatLng({
         lat,
         lng,
       });
     });
-    map.on("load", handleMapLoadEvent);
-  }, [map]);
+
+    mapContext.map.on("load", handleMapLoadEvent);
+  }, [mapContext?.map]);
 
   return <div ref={mapContainer} style={{ height: "100vh" }} />;
 };

@@ -4,13 +4,16 @@ import MapController from "./components/map-controller";
 import MapControllerProvider from "./contexts/map-controller-provider";
 import MapProvider from "./contexts/map-provider";
 import Receptacle from "../receptacle";
+import ControlPanel from "@app/shared/components/ControlPanel";
 
 const MainPanel = () => {
   return (
     <MapControllerProvider>
-      <MapController />
       <MapProvider>
-        <Receptacle />
+        <ControlPanel>
+          <MapController />
+          <Receptacle />
+        </ControlPanel>
         <Map />
       </MapProvider>
     </MapControllerProvider>

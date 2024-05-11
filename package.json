@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "rm -rf .parcel-cache dist && npx parcel serve public/index.html --https",
+    "dev": "rm -rf .parcel-cache dist && npx parcel serve public/index.html --https --no-cache",
     "build": "rm -rf .parcel-cache dist && npx parcel build public/index.html --no-source-maps",
     "test": "jest --verbose"
   },
@@ -101,7 +101,7 @@
     "process": "^0.11.10",
     "querystring-es3": "^0.2.1",
     "stream-browserify": "^3.0.0",
-    "tailwindcss": "^3.3.5",
+    "tailwindcss": "^3.4.3",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",

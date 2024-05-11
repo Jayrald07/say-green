@@ -13,7 +13,9 @@ export const getReceptacles = async () => {
     return;
   }
 
-  const receptacles: { longitude: number; latitude: number }[] = JSON.parse(data.getReceptacleLocation.data);
+  const receptacles: { longitude: number; latitude: number; hash: string }[] = JSON.parse(
+    data.getReceptacleLocation.data,
+  );
 
   return receptacles;
 };
@@ -42,7 +44,9 @@ export const createReceptacle = async (longitude: number, latitude: number) => {
     return;
   }
 
-  const receptacle: { longitude: number; latitude: number } = JSON.parse(data.createReceptacleLocation.data);
+  const receptacle: { longitude: number; latitude: number; hash: string } = JSON.parse(
+    data.createReceptacleLocation.data,
+  );
 
   return receptacle;
 };

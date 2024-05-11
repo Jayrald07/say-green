@@ -1,9 +1,8 @@
-import { LatLng } from "@app/types/declarations";
 import { useState } from "react";
 import { createReceptacle, deleteReceptacle, getReceptacles } from "..";
 
 export const useReceptacles = () => {
-  const [receptacles, setReceptacles] = useState<LatLng[]>([]);
+  const [receptacles, setReceptacles] = useState<{ hash: string; longitude: number; latitude: number }[]>([]);
 
   const getReceptacleBy = (hash: string) => {
     const receptacle = receptacles.find(({ hash: currentHash }) => {
@@ -15,6 +14,8 @@ export const useReceptacles = () => {
 
   const handleGetReceptacles = async () => {
     const foundReceptacles = await getReceptacles();
+
+    console.log(foundReceptacles);
 
     if (!foundReceptacles) {
       return;

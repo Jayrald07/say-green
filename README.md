@@ -1,8 +1,12 @@
 # Say Green
+[![Say Green Deployment](https://github.com/Jayrald07/say-green/actions/workflows/deployment.yml/badge.svg)](https://github.com/Jayrald07/say-green/actions/workflows/deployment.yml)
 
 A web app that monitor the green environment of certain area
 
-[![Say Green Deployment](https://github.com/Jayrald07/say-green/actions/workflows/deployment.yml/badge.svg)](https://github.com/Jayrald07/say-green/actions/workflows/deployment.yml)
+
+## Infrastructure
+![image](https://github.com/Jayrald07/say-green/assets/50800466/83b340ce-92a6-4916-bbaa-1754b53cfd55)
+
 
 ## Environment Variables
 

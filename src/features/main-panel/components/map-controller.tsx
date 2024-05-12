@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { CameraIcon, Circle } from "lucide-react";
+import { Circle } from "lucide-react";
 import { ToggleGroup, ToggleGroupItem } from "@app/shared/components/ui/toggle-group";
 import { cn } from "@app/shared/lib/utils";
 import { MapControllerContext } from "../contexts/map-controller-provider";
@@ -19,12 +19,6 @@ const MapController = () => {
           className={cn("hover:bg-neutral-800 data-[state=on]:bg-neutral-800 data-[state=on]:text-neutral-400")}
         >
           <Circle size={16} />
-        </ToggleGroupItem>
-        <ToggleGroupItem
-          value="upload-image"
-          className={cn("hover:bg-neutral-800 data-[state=on]:bg-neutral-800 data-[state=on]:text-neutral-400")}
-        >
-          <CameraIcon size={16} />
         </ToggleGroupItem>
       </ToggleGroup>
     </div>

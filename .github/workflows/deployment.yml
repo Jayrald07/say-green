@@ -22,20 +22,21 @@ jobs:
       userPoolClientId: ${{ needs.staging-resources.outputs.userPoolClientId }}
     secrets: inherit
 
-  production-resources:
-    uses: ./.github/workflows/resources.yml
-    needs: [staging-resources, staging-static-site]
-    with:
-      environment: production
-    secrets: inherit
+  # TODO: Under maintenance
+  # production-resources:
+  #   uses: ./.github/workflows/resources.yml
+  #   needs: [staging-resources, staging-static-site]
+  #   with:
+  #     environment: production
+  #   secrets: inherit
 
-  production-static-site:
-    uses: ./.github/workflows/source-build.yml
-    needs: production-resources
-    with:
-      environment: production
-      appSyncApiEndpoint: ${{ needs.production-resources.outputs.appSyncApiEndpoint }}
-      identityPoolId: ${{ needs.production-resources.outputs.identityPoolId }}
-      userPoolId: ${{ needs.production-resources.outputs.userPoolId }}
-      userPoolClientId: ${{ needs.production-resources.outputs.userPoolClientId }}
-    secrets: inherit
+  # production-static-site:
+  #   uses: ./.github/workflows/source-build.yml
+  #   needs: production-resources
+  #   with:
+  #     environment: production
+  #     appSyncApiEndpoint: ${{ needs.production-resources.outputs.appSyncApiEndpoint }}
+  #     identityPoolId: ${{ needs.production-resources.outputs.identityPoolId }}
+  #     userPoolId: ${{ needs.production-resources.outputs.userPoolId }}
+  #     userPoolClientId: ${{ needs.production-resources.outputs.userPoolClientId }}
+  #   secrets: inherit

@@ -1,14 +1,12 @@
 import { LatLngLiteral } from "leaflet";
 import { Map } from "mapbox-gl";
 
-export const renderReceptacle = ({ lat, lng, map }: LatLngLiteral & { map?: Map }) => {
+export const renderReceptacle = ({ lat, lng, map }: LatLngLiteral & { map: Map | null }) => {
   if (!map) {
     return;
   }
 
-  const suffix = crypto.randomUUID();
-
-  map.addSource(`circle-layer-${lat}-${lng}-${suffix}`, {
+  map.addSource(`circle-layer-${lat}-${lng}`, {
     type: "geojson",
     data: {
       type: "FeatureCollection",
@@ -26,9 +24,9 @@ export const renderReceptacle = ({ lat, lng, map }: LatLngLiteral & { map?: Map 
   });
 
   map.addLayer({
-    id: `circle-layer-${lat}-${lng}-${suffix}`,
+    id: `circle-layer-${lat}-${lng}`,
     type: "fill-extrusion",
-    source: `circle-layer-${lat}-${lng}-${suffix}`,
+    source: `circle-layer-${lat}-${lng}`,
     paint: {
       "fill-extrusion-color": "#ccc",
       "fill-extrusion-opacity": 0.8,

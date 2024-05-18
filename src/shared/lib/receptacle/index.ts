@@ -32,21 +32,25 @@ export const deleteReceptacle = async (hash: string) => {
 };
 
 export const createReceptacle = async (longitude: number, latitude: number) => {
-  const { data } = await client.graphql({
-    query: createReceptacleLocation,
-    variables: {
-      longitude,
-      latitude,
-    },
-  });
+  try {
+    const { data } = await client.graphql({
+      query: createReceptacleLocation,
+      variables: {
+        longitude,
+        latitude,
+      },
+    });
 
-  if (!data.createReceptacleLocation.data) {
-    return;
+    if (!data.createReceptacleLocation.data) {
+      return;
+    }
+
+    const receptacle: { longitude: number; latitude: number; hash: string } = JSON.parse(
+      data.createReceptacleLocation.data,
+    );
+
+    return receptacle;
+  } catch (err) {
+    console.log(err);
   }
-
-  const receptacle: { longitude: number; latitude: number; hash: string } = JSON.parse(
-    data.createReceptacleLocation.data,
-  );
-
-  return receptacle;
 };

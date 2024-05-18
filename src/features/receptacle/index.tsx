@@ -1,20 +1,24 @@
 import React, { useContext, useEffect } from "react";
-import { MapControllerContext } from "../main-panel/contexts/map-controller-provider";
-import { MapContext } from "../main-panel/contexts/map-provider";
 import { renderReceptacle } from "@app/pages/main/utils";
 import { createReceptacle } from "@app/shared/lib/receptacle";
 import { useReceptacles } from "@app/shared/lib/receptacle/hooks/useReceptacle";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@app/shared/components/ui/table";
 import { Button } from "@app/shared/components/ui/button";
 import { RefreshCwIcon, Trash2Icon } from "lucide-react";
+import useMap from "@app/shared/hooks/useMap";
+import useController from "@app/shared/hooks/useController";
+import { Controller } from "@app/shared/types";
+import { MapContext } from "../main-panel/contexts/map-context";
+import { removeReceptacleFromMap } from "../main-panel/utils";
 
 export default function Receptacle() {
-  const mapControllerContext = useContext(MapControllerContext);
-  const mapContext = useContext(MapContext);
-  const { receptacles, getReceptacles, deleteReceptacle } = useReceptacles();
+  const { receptacles, getReceptacles, deleteReceptacle, appendReceptacle } = useReceptacles();
+  const { latitude, longitude } = useMap();
+  const { controller } = useController();
+  const { map } = useContext(MapContext);
 
   const handleFocusReceptacle = (lat: number, lng: number) => {
-    mapContext?.map?.flyTo({
+    map?.flyTo({
       center: {
         lat,
         lng,
@@ -23,39 +27,57 @@ export default function Receptacle() {
     });
   };
 
+  const handlePlotReceptacle = async () => {
+    if (!map) {
+      return;
+    }
+
+    if (controller !== Controller.ReceptaclePlotter) {
+      return;
+    }
+
+    if (latitude == 0 || longitude == 0) {
+      return;
+    }
+
+    renderReceptacle({
+      map,
+      lat: latitude,
+      lng: longitude,
+    });
+
+    const receptacle = await createReceptacle(longitude, latitude);
+
+    if (!receptacle) {
+      return;
+    }
+
+    appendReceptacle(receptacle.hash, longitude, latitude);
+  };
+
+  const handleRemoveReceptacle = async (hash: string, latitude: number, longitude: number) => {
+    deleteReceptacle(hash);
+
+    if (!map) {
+      return;
+    }
+
+    removeReceptacleFromMap(map, latitude, longitude);
+  };
+
   useEffect(() => {
-    if (!mapContext?.map) {
-      return;
-    }
-
-    if (mapControllerContext?.type !== "plot-receptacle") {
-      return;
-    }
-
-    if (mapContext.lat == 0 || mapContext.lng == 0) {
-      return;
-    }
-
-    if (mapContext?.lat !== 0 || mapContext.lng !== 0) {
-      renderReceptacle({
-        map: mapContext.map,
-        lat: mapContext.lat,
-        lng: mapContext.lng,
-      });
-
-      createReceptacle(mapContext.lng, mapContext.lat);
-    }
-  }, [mapContext]);
+    handlePlotReceptacle();
+  }, [longitude, latitude]);
 
   useEffect(() => {
     getReceptacles();
   }, []);
 
-  if (!mapControllerContext) {
+  if (!controller) {
     return <></>;
   }
 
-  if (mapControllerContext.type !== "plot-receptacle") {
+  if (controller !== Controller.ReceptaclePlotter) {
     return <></>;
   }
 
@@ -90,7 +112,7 @@ export default function Receptacle() {
                   className="cursor-pointer text-red-400"
                   onClick={(e) => {
                     e.stopPropagation();
-                    deleteReceptacle(hash);
+                    handleRemoveReceptacle(hash, latitude, longitude);
                   }}
                 />
               </TableCell>

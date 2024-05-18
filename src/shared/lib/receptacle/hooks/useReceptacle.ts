@@ -58,11 +58,22 @@ export const useReceptacles = () => {
     return deletedReceptacle;
   };
 
+  const handleAppendReceptacle = (hash: string, longitude: number, latitude: number) => {
+    const receptacle = {
+      hash,
+      longitude,
+      latitude,
+    };
+
+    setReceptacles((prevReceptacles) => [...prevReceptacles, receptacle]);
+  };
+
   return {
     receptacles,
+    getReceptacleBy,
     getReceptacles: handleGetReceptacles,
     createReceptacle: handleCreateReceptacle,
     deleteReceptacle: handleDeleteReceptacle,
-    getReceptacleBy,
+    appendReceptacle: handleAppendReceptacle,
   };
 };

@@ -1,4 +1,3 @@
-import { LatLng } from "@app/shared/types/declarations";
 import { Map } from "mapbox-gl";
 
 export const startMap = async (elementContainer: HTMLElement | null): Promise<Map> => {
@@ -111,9 +110,7 @@ export const renderAs3d = (map: Map) => {
   });
 };
 
-export const removeReceptacleFromMap = (map: Map, receptacle: LatLng) => {
-  const { latitude, longitude } = receptacle;
-
+export const removeReceptacleFromMap = (map: Map, latitude: number, longitude: number) => {
   map.removeLayer(`circle-layer-${latitude}-${longitude}`);
   map.removeSource(`circle-layer-${latitude}-${longitude}`);
 };

@@ -1,21 +1,23 @@
 import React, { useContext, useEffect, useRef } from "react";
 import mapboxgl from "mapbox-gl";
 import { renderAs3d, renderBoundary, startMap } from "../utils";
-import { MapContext } from "../contexts/map-provider";
-import { MapControllerContext } from "../contexts/map-controller-provider";
 import { getReceptacles } from "@app/shared/lib/receptacle";
 import { renderReceptacle } from "@app/pages/main/utils";
+import useMap from "@app/shared/hooks/useMap";
+import useController from "@app/shared/hooks/useController";
+import { MapContext } from "../contexts/map-context";
 
 mapboxgl.accessToken = process.env.MAPBOX_GL_ACCESS_TOKEN as string;
 
 const Map = () => {
   const mapContainer = useRef<HTMLDivElement>(null);
-  const mapContext = useContext(MapContext);
-  const mapControllerContext = useContext(MapControllerContext);
+  const { setCoordinate } = useMap();
+  const { controller } = useController();
+  const { map, setMap } = useContext(MapContext);
 
   const initializeMap = async () => {
     const mapInstance = await startMap(mapContainer.current);
-    mapContext?.setMap(mapInstance);
+    setMap(mapInstance);
   };
 
   const handleRenderReceptacles = async () => {
@@ -25,57 +27,46 @@ const Map = () => {
       return;
     }
 
-    if (!mapContext) {
-      return;
-    }
-
-    if (!mapContext.map) {
+    if (!map) {
       return;
     }
 
     receptacles.map((receptacle) => {
-      renderReceptacle({ lat: receptacle.latitude, lng: receptacle.longitude, map: mapContext.map });
+      renderReceptacle({ lat: receptacle.latitude, lng: receptacle.longitude, map });
     });
   };
 
   const handleMapLoadEvent = () => {
-    if (!mapContext?.map) {
+    if (!map) {
       return;
     }
 
-    renderAs3d(mapContext.map);
-    renderBoundary(mapContext.map);
+    renderAs3d(map);
+    renderBoundary(map);
     handleRenderReceptacles();
   };
 
   useEffect(() => {
-    console.log(mapContext);
-  }, [mapContext]);
-
-  useEffect(() => {
-    if (mapContext) {
-      mapContext.setLatLng({ lat: 0, lng: 0 });
+    if (map) {
+      setCoordinate(0, 0);
     }
-  }, [mapControllerContext]);
+  }, [controller]);
 
   useEffect(() => {
     initializeMap();
   }, []);
 
   useEffect(() => {
-    if (!mapContext?.map) {
+    if (!map) {
       return;
     }
 
-    mapContext.map.on("click", ({ lngLat: { lat, lng } }) => {
-      mapContext?.setLatLng({
-        lat,
-        lng,
-      });
+    map.on("click", ({ lngLat: { lat, lng } }) => {
+      setCoordinate(lat, lng);
     });
 
-    mapContext.map.on("load", handleMapLoadEvent);
-  }, [mapContext?.map]);
+    map.on("load", handleMapLoadEvent);
+  }, [map]);
 
   return <div ref={mapContainer} style={{ height: "100vh" }} />;
 };

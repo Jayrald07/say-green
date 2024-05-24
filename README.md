@@ -1,7 +1,7 @@
 # Say Green
 [![Say Green Deployment](https://github.com/Jayrald07/say-green/actions/workflows/deployment.yml/badge.svg)](https://github.com/Jayrald07/say-green/actions/workflows/deployment.yml)
 
-A web app that monitor the green environment of certain area
+A web app that plots receptacles
 
 
 ## Infrastructure

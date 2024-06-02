@@ -3,6 +3,7 @@ import { generateClient } from "aws-amplify/api";
 import config from "@app/amplifyconfiguration.json";
 import { createPoint } from "@app/graphql/mutations";
 import { useToast } from "@app/shared/components/ui/use-toast";
+import { getPoints } from "@app/graphql/queries";
 
 Amplify.configure(config);
 
@@ -24,17 +25,44 @@ const usePoint = () => {
       toast({
         title: "Create Point",
         description: "Receptacle plotted successfully",
-        className: "dark:bg-gray-800",
         duration: 2000,
       });
       return result.data.createPoint;
-    } catch (e) {
-      console.error(e);
+    } catch (e: any) {
+      toast({
+        variant: "destructive",
+        title: "Create Point",
+        description: e.message,
+        duration: 2000,
+      });
+    }
+  };
+
+  const handleGetPoints = async (latitude: number, longitude: number) => {
+    try {
+      const result = await client.graphql({
+        query: getPoints,
+        variables: {
+          radius: 100,
+          latitude,
+          longitude,
+        },
+      });
+
+      return result.data.getPoints;
+    } catch (e: any) {
+      toast({
+        variant: "destructive",
+        title: "Create Point",
+        description: e.message,
+        duration: 2000,
+      });
     }
   };
 
   return {
     createPoint: handleCreatePoint,
+    getPoints: handleGetPoints,
   };
 };
 

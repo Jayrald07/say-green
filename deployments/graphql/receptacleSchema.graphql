@@ -11,7 +11,11 @@ type Mutation {
 }
 
 type Query {
-  getReceptacleLocation: ReceptacleLocationOutput
+  getPoints(
+    radius: Int!
+    longitude: Float!
+    latitude: Float!
+  ): ReceptacleLocationOutput
 }
 
 type Subscription {

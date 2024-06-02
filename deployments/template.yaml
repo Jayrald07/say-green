@@ -23,12 +23,20 @@ Resources:
       Parameters:
         DynamoDbArn: !GetAtt DynamoDbReceptacleStack.Outputs.DynamoDbArn
 
+  GetPointsLambdaStack:
+    Type: AWS::Serverless::Application
+    Properties:
+      Location: ./lambda/getPoints.yaml
+      Parameters:
+        DynamoDbArn: !GetAtt DynamoDbReceptacleStack.Outputs.DynamoDbArn
+
   AppSyncReceptacleStack:
     Type: AWS::Serverless::Application
     Properties:
       Location: ./appsync/appSyncReceptacle.yaml
       Parameters:
         CreatePointLambdaArn: !GetAtt CreatePointLambdaStack.Outputs.CreatePointLambdaArn
+        GetPointsLambdaArn: !GetAtt GetPointsLambdaStack.Outputs.GetPointsLambdaArn
 
   S3BucketImagesStack:
     Type: AWS::Serverless::Application

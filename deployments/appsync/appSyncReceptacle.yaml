@@ -5,6 +5,8 @@ Description: ""
 Parameters:
   CreatePointLambdaArn:
     Type: String
+  GetPointsLambdaArn:
+    Type: String
 
 Resources:
   AppSyncApiReceptacle:
@@ -70,6 +72,56 @@ Resources:
                 Action:
                   - lambda:InvokeFunction
                 Resource: !Ref CreatePointLambdaArn
+
+  AppSyncGetPointsDataSource:
+    Type: AWS::AppSync::DataSource
+    Properties:
+      ApiId: !GetAtt AppSyncApiReceptacle.ApiId
+      Name: GetPoints
+      Type: AWS_LAMBDA
+      LambdaConfig:
+        LambdaFunctionArn: !Ref GetPointsLambdaArn
+      ServiceRoleArn: !GetAtt LambdaDataSourceServiceGetPointsRole.Arn
+
+  AppSyncGetPointsResolver:
+    Type: AWS::AppSync::Resolver
+    DependsOn:
+      - AppSyncSchemaReceptacle
+    Properties:
+      ApiId: !GetAtt AppSyncApiReceptacle.ApiId
+      Kind: UNIT
+      RequestMappingTemplate: |
+        {
+          "version" : "2017-02-28",
+          "operation": "Invoke",
+          "payload": $util.toJson($context.args)
+        }
+      ResponseMappingTemplate: $util.toJson($context.result)
+      FieldName: getPoints
+      TypeName: Query
+      DataSourceName: !GetAtt AppSyncGetPointsDataSource.Name
+
+  LambdaDataSourceServiceGetPointsRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - appsync.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      Policies:
+        - PolicyName: LambdaFunctionGetPointsPolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - lambda:InvokeFunction
+                Resource: !Ref GetPointsLambdaArn
 
 Outputs:
   AppSyncApiArn:

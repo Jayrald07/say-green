@@ -1,0 +1,43 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+
+Parameters:
+  DynamoDbArn:
+    Type: String
+
+Resources:
+  GetPointsLambda:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+    Properties:
+      FunctionName: GetPoints
+      CodeUri: ../../cmd/get-points
+      Handler: bootstrap
+      Runtime: provided.al2023
+      Architectures:
+        - x86_64
+      Policies:
+        - Version: "2012-10-17"
+          Statement:
+            - Effect: "Allow"
+              Action:
+                - "dynamodb:PutItem"
+                - "dynamodb:DeleteItem"
+                - "dynamodb:Query"
+              Resource:
+                - !Ref DynamoDbArn
+                - !Sub "${DynamoDbArn}/*"
+      Environment:
+        Variables:
+          TABLE_NAME: say-green
+          HASH_KEY_ATTRIBUTE: hash
+          RANGE_KEY_ATTRIBUTE: range
+          GEO_HASH_INDEX_NAME: hash-geohash
+
+Outputs:
+  GetPointsLambdaArn:
+    Value: !GetAtt GetPointsLambda.Arn
+    Export:
+      Name: GetPointsLambdaArn

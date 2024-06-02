@@ -8,14 +8,11 @@ type GeneratedQuery<InputType, OutputType> = string & {
   __generatedQueryOutput: OutputType;
 };
 
-export const getReceptacleLocation = /* GraphQL */ `query GetReceptacleLocation {
-  getReceptacleLocation {
+export const getPoints = /* GraphQL */ `query GetPoints($radius: Int!, $longitude: Float!, $latitude: Float!) {
+  getPoints(radius: $radius, longitude: $longitude, latitude: $latitude) {
     message
     data
     __typename
   }
 }
-` as GeneratedQuery<
-  APITypes.GetReceptacleLocationQueryVariables,
-  APITypes.GetReceptacleLocationQuery
->;
+` as GeneratedQuery<APITypes.GetPointsQueryVariables, APITypes.GetPointsQuery>;

@@ -21,11 +21,14 @@ export type CreatePointMutation = {
   } | null,
 };
 
-export type GetReceptacleLocationQueryVariables = {
+export type GetPointsQueryVariables = {
+  radius: number,
+  longitude: number,
+  latitude: number,
 };
 
-export type GetReceptacleLocationQuery = {
-  getReceptacleLocation?:  {
+export type GetPointsQuery = {
+  getPoints?:  {
     __typename: "ReceptacleLocationOutput",
     message?: string | null,
     data?: string | null,

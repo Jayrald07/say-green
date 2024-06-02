@@ -63,7 +63,7 @@ jobs:
             "aws_appsync_graphqlEndpoint": $appSyncApiEndpoint,
             "aws_appsync_region": $region,
             "aws_appsync_authenticationType": $appSyncAuthType
-          }' > web/app/amplifyconfiguration.json
+          }' > app/amplifyconfiguration.json
       - name: Build source
         env:
           MAPBOX_GL_ACCESS_TOKEN: ${{ secrets.MAPBOX_GL_ACCESS_TOKEN }}

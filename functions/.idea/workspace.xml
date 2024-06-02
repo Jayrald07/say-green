@@ -5,144 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1cf044a-8b63-48b7-9ea8-7f57b1ba030f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../internal/dynamoDbGeo/dynamodb.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/app/features/coordinate-detail/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/app/features/main-panel/__tests__/floating-side-bar.test.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/app/features/main-panel/components/map.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/app/features/main-panel/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/app/pages/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/app/pages/main.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/../web/.eslintrc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.graphqlconfig.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../web/.graphqlconfig.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.postcssrc" beforeDir="false" afterPath="$PROJECT_DIR$/../web/.postcssrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/../web/.prettierrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.vscode/settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.vscode/tailwind.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/../web/Jenkinsfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../amplify/.config/project-config.json" beforeDir="false" afterPath="$PROJECT_DIR$/../web/amplify/.config/project-config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../amplify/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../web/amplify/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../amplify/cli.json" beforeDir="false" afterPath="$PROJECT_DIR$/../web/amplify/cli.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../amplify/hooks/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../web/amplify/hooks/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../amplify/team-provider-info.json" beforeDir="false" afterPath="$PROJECT_DIR$/../web/amplify/team-provider-info.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../components.json" beforeDir="false" afterPath="$PROJECT_DIR$/../web/components.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storeReceptacleLambda/cmd/dynamodb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storeReceptacleLambda/cmd/handler.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storeReceptacleLambda/cmd/handler_test.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storeReceptacleLambda/cmd/structs.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storeReceptacleLambda/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/../go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/../go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graphql/receptacleSchema.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/../deployments/graphql/receptacleSchema.graphql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../infrastructure/appsync/appSyncReceptacle.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../deployments/appsync/appSyncReceptacle.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../infrastructure/cognito/identityPool.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../deployments/cognito/identityPool.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../infrastructure/dynamodb/dynamoDbReceptacle.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../deployments/dynamodb/dynamoDbReceptacle.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../infrastructure/lambda/lambdaReceptacle.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../deployments/lambda/lambdaReceptacle.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../infrastructure/s3/bucket-images.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../deployments/s3/bucket-images.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../infrastructure/s3/static-site.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../deployments/s3/static-site.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../infrastructure/samconfig.toml" beforeDir="false" afterPath="$PROJECT_DIR$/../deployments/samconfig.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../infrastructure/template.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../deployments/template.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jest.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../web/jest.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../web/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../web/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../web/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/../web/schema.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/API.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/API.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/__mocks__/styleMock.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/__mocks__/styleMock.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/__setup_files__/htmlSetup.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/__setup_files__/htmlSetup.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/constants.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/features/main-panel/__tests__/floating-side-bar.test.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/features/main-panel/components/map-controller.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/features/main-panel/components/map.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/features/main-panel/contexts/map-context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/features/main-panel/contexts/map-context.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/features/main-panel/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/features/main-panel/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/features/main-panel/utils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/features/receptacle/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/graphql/mutations.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/graphql/mutations.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/graphql/queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/graphql/queries.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/graphql/schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/graphql/schema.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/graphql/subscriptions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/graphql/subscriptions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/pages/login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/pages/login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/pages/main/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/pages/main/utils.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/Button/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ControlPanel/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/control-panel/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ErrorPage/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/error-page/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ImageUploader/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/InputFile/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/InputFile/types.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/Modal/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/Modal/types.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ProgressBar/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ProgressBar/types.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/Redirect/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/authorization/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/authorization/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/accordion.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/accordion.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/alert-dialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/alert-dialog.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/alert.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/alert.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/aspect-ratio.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/aspect-ratio.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/avatar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/avatar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/badge.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/badge.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/breadcrumb.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/breadcrumb.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/calendar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/calendar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/carousel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/carousel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/checkbox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/checkbox.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/collapsible.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/collapsible.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/command.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/command.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/context-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/context-menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/dialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/dialog.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/drawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/drawer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/dropdown-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/dropdown-menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/hover-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/hover-card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/input-otp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/input-otp.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/input.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/label.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/label.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/menubar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/menubar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/navigation-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/navigation-menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/pagination.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/popover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/popover.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/progress.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/progress.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/radio-group.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/radio-group.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/resizable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/resizable.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/scroll-area.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/scroll-area.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/select.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/select.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/separator.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/separator.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/sheet.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/sheet.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/skeleton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/skeleton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/slider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/slider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/sonner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/sonner.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/switch.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/switch.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/table.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/tabs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/tabs.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/textarea.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/textarea.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/toast.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/toast.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/toaster.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/toaster.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/toggle-group.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/toggle-group.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/toggle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/toggle.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/tooltip.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/tooltip.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/components/ui/use-toast.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/components/ui/use-toast.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/hooks/useController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/hooks/useController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/hooks/useMap.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/hooks/useMap.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/lib/imageManager/hooks/useImageUploader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/lib/imageManager/hooks/useImageUploader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/lib/imageManager/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/lib/imageManager/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/lib/receptacle/__tests__/index.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/lib/receptacle/__tests__/index.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/lib/receptacle/hooks/useReceptacle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/lib/receptacle/hooks/useReceptacle.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/lib/receptacle/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/lib/receptacle/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/lib/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/lib/utils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/store/features/map-controller-slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/store/features/map-controller-slice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/store/features/map-slice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/store/features/map-slice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/store/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/shared/types/declarations.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/shared/types/declarations.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../web/app/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web/tailwind.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/../web/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,25 +31,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultGoTemplateProperty": "Go File",
-    "Go Test.TestCreatePoint in receptacle/internal/dynamoDbGeo.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "RunOnceActivity.go.modules.automatic.dependencies.download": "true",
-    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
-    "git-widget-placeholder": "master",
-    "go.import.settings.migrated": "true",
-    "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "/home/jayrald/say-green",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "go.vgo"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
+    &quot;Go Test.TestCreatePoint in receptacle/internal/dynamoDbGeo.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.automatic.dependencies.download&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/jayrald/say-green&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;go.vgo&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="TestCreatePoint in receptacle/internal/dynamoDbGeo" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="functions" />

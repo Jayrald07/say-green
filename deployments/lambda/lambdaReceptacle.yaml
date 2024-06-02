@@ -7,13 +7,13 @@ Parameters:
     Type: String
 
 Resources:
-  StoreReceptacleFunction:
+  CreatePointLambda:
     Type: AWS::Serverless::Function
     Metadata:
       BuildMethod: go1.x
     Properties:
-      FunctionName: StoreReceptacleFunction
-      CodeUri: ../../functions/storeReceptacleLambda
+      FunctionName: CreatePoint
+      CodeUri: ../../cmd/create-point
       Handler: bootstrap
       Runtime: provided.al2023
       Architectures:
@@ -29,9 +29,15 @@ Resources:
               Resource:
                 - !Ref DynamoDbArn
                 - !Sub "${DynamoDbArn}/*"
+      Environment:
+        Variables:
+          TABLE_NAME: say-green
+          HASH_KEY_ATTRIBUTE: hash
+          RANGE_KEY_ATTRIBUTE: range
+          GEO_HASH_INDEX_NAME: hash-geohash
 
 Outputs:
-  StoreReceptacleFunctionArn:
-    Value: !GetAtt StoreReceptacleFunction.Arn
+  CreatePointLambdaArn:
+    Value: !GetAtt CreatePointLambda.Arn
     Export:
-      Name: StoreReceptacleFunctionArn
+      Name: CreatePointLambdaArn

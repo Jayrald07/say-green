@@ -16,7 +16,7 @@ Resources:
     Properties:
       Location: ./dynamodb/dynamoDbReceptacle.yaml
 
-  StoreReceptacleFunctionStack:
+  CreatePointLambdaStack:
     Type: AWS::Serverless::Application
     Properties:
       Location: ./lambda/lambdaReceptacle.yaml
@@ -28,7 +28,7 @@ Resources:
     Properties:
       Location: ./appsync/appSyncReceptacle.yaml
       Parameters:
-        StoreReceptacleFunctionArn: !GetAtt StoreReceptacleFunctionStack.Outputs.StoreReceptacleFunctionArn
+        CreatePointLambdaArn: !GetAtt CreatePointLambdaStack.Outputs.CreatePointLambdaArn
 
   S3BucketImagesStack:
     Type: AWS::Serverless::Application

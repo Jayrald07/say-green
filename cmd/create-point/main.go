@@ -6,12 +6,8 @@ import (
 	"receptacle/internal/pkg/dynamoDbGeo"
 )
 
-func main() {
-	lambda.Start(Handler)
-}
-
-func Handler(ctx context.Context, input dynamoDbGeo.LatLng) (any, error) {
-	_, err := dynamoDbGeo.CreatePoint(input)
+func HandleRequest(ctx context.Context, event dynamoDbGeo.LatLng) (any, error) {
+	_, err := dynamoDbGeo.CreatePoint(event)
 	if err != nil {
 		return nil, err
 	}
@@ -21,6 +17,10 @@ func Handler(ctx context.Context, input dynamoDbGeo.LatLng) (any, error) {
 		Data    any    `json:"data"`
 	}{
 		Message: "success",
-		Data:    input,
+		Data:    event,
 	}, nil
+}
+
+func main() {
+	lambda.Start(HandleRequest)
 }

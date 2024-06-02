@@ -2,9 +2,11 @@ import React from "react";
 import useMap from "@app/shared/hooks/useMap";
 import { Button } from "@app/shared/components/ui/button";
 import { Card, CardContent } from "@app/shared/components/ui/card";
+import usePoint from "@app/shared/hooks/usePoint";
 
 export default function CoordinateDetail() {
   const { latitude, longitude } = useMap();
+  const {createPoint} = usePoint()
 
   if (!latitude || !longitude) {
     return <></>;
@@ -18,7 +20,9 @@ export default function CoordinateDetail() {
           <p>Longitude: {longitude}</p>
         </section>
         <section>
-          <Button className="w-full dark:bg-neutral-100">Plot</Button>
+          <Button className="w-full dark:bg-neutral-100" onClick={() => {
+            createPoint(latitude,longitude);
+          }}>Plot</Button>
         </section>
       </CardContent>
     </Card>

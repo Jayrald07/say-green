@@ -3,7 +3,7 @@ Transform: AWS::Serverless-2016-10-31
 Description: ""
 
 Parameters:
-  StoreReceptacleFunctionArn:
+  CreatePointLambdaArn:
     Type: String
 
 Resources:
@@ -19,29 +19,19 @@ Resources:
     Type: AWS::AppSync::GraphQLSchema
     Properties:
       ApiId: !GetAtt AppSyncApiReceptacle.ApiId
-      DefinitionS3Location: ../../graphql/receptacleSchema.graphql
+      DefinitionS3Location: ../graphql/receptacleSchema.graphql
 
-  AppSyncStoreReceptacleDataSource:
+  AppSyncCreatePointDataSource:
     Type: AWS::AppSync::DataSource
     Properties:
       ApiId: !GetAtt AppSyncApiReceptacle.ApiId
       Name: StoreReceptacle
       Type: AWS_LAMBDA
       LambdaConfig:
-        LambdaFunctionArn: !Ref StoreReceptacleFunctionArn
-      ServiceRoleArn: !GetAtt LambdaDataSourceServiceStoreReceptacleRole.Arn
+        LambdaFunctionArn: !Ref CreatePointLambdaArn
+      ServiceRoleArn: !GetAtt LambdaDataSourceServiceCreatePointRole.Arn
 
-  AppSyncDeleteReceptacleDataSource:
-    Type: AWS::AppSync::DataSource
-    Properties:
-      ApiId: !GetAtt AppSyncApiReceptacle.ApiId
-      Name: DeleteReceptacle
-      Type: AWS_LAMBDA
-      LambdaConfig:
-        LambdaFunctionArn: !Ref StoreReceptacleFunctionArn
-      ServiceRoleArn: !GetAtt LambdaDataSourceServiceStoreReceptacleRole.Arn
-
-  AppSyncApiReceptacleResolver:
+  AppSyncCreatePointResolver:
     Type: AWS::AppSync::Resolver
     DependsOn:
       - AppSyncSchemaReceptacle
@@ -52,59 +42,14 @@ Resources:
         {
           "version" : "2017-02-28",
           "operation": "Invoke",
-          "payload": {
-            "type": "create",
-            "payload": $util.toJson($context.args)
-          }
+          "payload": $util.toJson($context.args)
         }
       ResponseMappingTemplate: $util.toJson($context.result)
-      FieldName: createReceptacleLocation
+      FieldName: createPoint
       TypeName: Mutation
-      DataSourceName: !GetAtt AppSyncStoreReceptacleDataSource.Name
+      DataSourceName: !GetAtt AppSyncCreatePointDataSource.Name
 
-  AppSyncApiDeleteReceptacleResolver:
-    Type: AWS::AppSync::Resolver
-    DependsOn:
-      - AppSyncSchemaReceptacle
-      - AppSyncStoreReceptacleDataSource
-    Properties:
-      ApiId: !GetAtt AppSyncApiReceptacle.ApiId
-      Kind: UNIT
-      RequestMappingTemplate: |
-        {
-          "version" : "2017-02-28",
-          "operation": "Invoke",
-          "payload": {
-            "type": "delete",
-            "payload": $util.toJson($context.args)
-          }
-        }
-      ResponseMappingTemplate: $util.toJson($context.result)
-      FieldName: deleteReceptacleLocation
-      TypeName: Mutation
-      DataSourceName: !GetAtt AppSyncDeleteReceptacleDataSource.Name
-
-  AppSyncApiGetReceptacleResolver:
-    Type: AWS::AppSync::Resolver
-    DependsOn:
-      - AppSyncSchemaReceptacle
-    Properties:
-      ApiId: !GetAtt AppSyncApiReceptacle.ApiId
-      Kind: UNIT
-      RequestMappingTemplate: |
-        {
-          "version" : "2017-02-28",
-          "operation": "Invoke",
-          "payload": {
-            "type": "get"
-          }
-        }
-      ResponseMappingTemplate: $util.toJson($context.result)
-      FieldName: getReceptacleLocation
-      TypeName: Query
-      DataSourceName: !GetAtt AppSyncStoreReceptacleDataSource.Name
-
-  LambdaDataSourceServiceStoreReceptacleRole:
+  LambdaDataSourceServiceCreatePointRole:
     Type: AWS::IAM::Role
     Properties:
       AssumeRolePolicyDocument:
@@ -124,7 +69,7 @@ Resources:
               - Effect: Allow
                 Action:
                   - lambda:InvokeFunction
-                Resource: !Ref StoreReceptacleFunctionArn
+                Resource: !Ref CreatePointLambdaArn
 
 Outputs:
   AppSyncApiArn:

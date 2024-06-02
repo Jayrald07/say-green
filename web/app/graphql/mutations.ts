@@ -8,25 +8,14 @@ type GeneratedMutation<InputType, OutputType> = string & {
   __generatedMutationOutput: OutputType;
 };
 
-export const createReceptacleLocation = /* GraphQL */ `mutation CreateReceptacleLocation($longitude: Float!, $latitude: Float!) {
-  createReceptacleLocation(longitude: $longitude, latitude: $latitude) {
+export const createPoint = /* GraphQL */ `mutation CreatePoint($longitude: Float!, $latitude: Float!) {
+  createPoint(longitude: $longitude, latitude: $latitude) {
     message
     data
     __typename
   }
 }
 ` as GeneratedMutation<
-  APITypes.CreateReceptacleLocationMutationVariables,
-  APITypes.CreateReceptacleLocationMutation
->;
-export const deleteReceptacleLocation = /* GraphQL */ `mutation DeleteReceptacleLocation($hash: String!) {
-  deleteReceptacleLocation(hash: $hash) {
-    message
-    data
-    __typename
-  }
-}
-` as GeneratedMutation<
-  APITypes.DeleteReceptacleLocationMutationVariables,
-  APITypes.DeleteReceptacleLocationMutation
+  APITypes.CreatePointMutationVariables,
+  APITypes.CreatePointMutation
 >;

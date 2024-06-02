@@ -30,7 +30,7 @@ var _ = Describe("Point", func() {
 
 	Describe("Creating point", func() {
 		It("should create a valid point", func() {
-			result, err := createPoint.Handler(ctx, point)
+			result, err := createPoint.HandleRequest(ctx, point)
 
 			Expect(err).To(BeNil())
 			Expect(result).ToNot(BeNil())

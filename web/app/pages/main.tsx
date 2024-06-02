@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import { store } from "@app/shared/store";
 import MapContextProvider from "@app/features/main-panel/contexts/map-context";
 import CoordinateDetail from "@app/features/coordinate-detail";
+import { Toaster } from "@app/shared/components/ui/toaster";
 
 Amplify.configure(amplifyConfiguration);
 
@@ -19,6 +20,7 @@ export default function Main() {
           <MainPanel />
         </MapContextProvider>
       </Provider>
+      <Toaster />
     </Authorization>
   );
 }

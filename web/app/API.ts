@@ -8,25 +8,13 @@ export type ReceptacleLocationOutput = {
   data?: string | null,
 };
 
-export type CreateReceptacleLocationMutationVariables = {
+export type CreatePointMutationVariables = {
   longitude: number,
   latitude: number,
 };
 
-export type CreateReceptacleLocationMutation = {
-  createReceptacleLocation?:  {
-    __typename: "ReceptacleLocationOutput",
-    message?: string | null,
-    data?: string | null,
-  } | null,
-};
-
-export type DeleteReceptacleLocationMutationVariables = {
-  hash: string,
-};
-
-export type DeleteReceptacleLocationMutation = {
-  deleteReceptacleLocation?:  {
+export type CreatePointMutation = {
+  createPoint?:  {
     __typename: "ReceptacleLocationOutput",
     message?: string | null,
     data?: string | null,

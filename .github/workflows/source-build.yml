@@ -28,6 +28,9 @@ jobs:
   source-build:
     environment: ${{ inputs.environment }}
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
     steps:
       - uses: actions/checkout@v4
       - uses: aws-actions/configure-aws-credentials@v4
@@ -41,7 +44,6 @@ jobs:
           node-version: 20.10.0
       - name: Install dependencies
         run: |
-          cd web
           npm install
       - name: Add amplifyconfiguration.json
         run: |

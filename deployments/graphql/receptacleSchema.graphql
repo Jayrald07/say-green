@@ -1,0 +1,25 @@
+type ReceptacleLocationOutput {
+  message: String
+  data: AWSJSON
+}
+
+type Mutation {
+  createPoint(
+    longitude: Float!
+    latitude: Float!
+  ): ReceptacleLocationOutput
+}
+
+type Query {
+  getReceptacleLocation: ReceptacleLocationOutput
+}
+
+type Subscription {
+  onCreateReceptacleLocation: ReceptacleLocationOutput
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}

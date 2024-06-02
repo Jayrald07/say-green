@@ -1,0 +1,4 @@
+schema:
+  - aws-schema.graphql
+  - receptacleSchema.graphql
+documents: '**/*.graphql'

@@ -1,17 +1,17 @@
-.env
+web/.env
 sam/*.aws-sam
 sam/*.toml
 .aws-sam
 .parcel-cache
 
 #amplify-do-not-edit-begin
-amplify/\#current-cloud-backend
-amplify/.config/local-*
-amplify/logs
-amplify/mock-data
-amplify/mock-api-resources
-amplify/backend/amplify-meta.json
-amplify/backend/.temp
+web/amplify/\#current-cloud-backend
+web/amplify/.config/local-*
+web/amplify/logs
+web/amplify/mock-data
+web/amplify/mock-api-resources
+web/amplify/backend/amplify-meta.json
+web/amplify/backend/.temp
 build/
 dist/
 node_modules/

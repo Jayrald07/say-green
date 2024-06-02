@@ -41,6 +41,7 @@ jobs:
           node-version: 20.10.0
       - name: Install dependencies
         run: |
+          cd web
           npm install
       - name: Add amplifyconfiguration.json
         run: |
@@ -60,7 +61,7 @@ jobs:
             "aws_appsync_graphqlEndpoint": $appSyncApiEndpoint,
             "aws_appsync_region": $region,
             "aws_appsync_authenticationType": $appSyncAuthType
-          }' > src/amplifyconfiguration.json
+          }' > web/app/amplifyconfiguration.json
       - name: Build source
         env:
           MAPBOX_GL_ACCESS_TOKEN: ${{ secrets.MAPBOX_GL_ACCESS_TOKEN }}
@@ -78,4 +79,4 @@ jobs:
           npm run build
       - name: Deploy build files to S3
         run: |
-          aws s3 sync ./dist s3://${{ vars.BUCKET_SITE_NAME }}
+          aws s3 sync dist s3://${{ vars.BUCKET_SITE_NAME }}
